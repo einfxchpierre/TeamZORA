@@ -2,14 +2,6 @@
   "filename": "messages.json",
   "description": "Add the messages you want to add reaction roles too.",
   "humanName": "Messages",
-  "informationBanner": {
-    "button": {
-      "url": "https://scootk.it/login-as-bot",
-      "text": "Open Login-As-Bot"
-    },
-    "en": "You can have a way better user experience for your members using Button-Roles, Self-Role-Elements and other SCNX features in Login-As-Bot.",
-    "de": "Du kannst eine wesentlich Bessere Nutzererfahrung für deine Mitglieder erstellen, indem du Button-Rollen, Selbst-Rollen-Erfahrungen und mehr SCNX Funktionen von Als-Bot-Anmelden verwenden."
-  },
   "configElements": true,
   "content": [
     {

@@ -1,0 +1,896 @@
+{
+  "_core": {
+    "config": {
+      "content": {
+        "user_presence": {
+          "default": "dein Bot-Status"
+        }
+      }
+    },
+    "strings": {
+      "content": {
+        "footer": {
+          "default": "Powered by TeamZORA"
+        },
+        "footerImgUrl": {
+          "default": ""
+        },
+        "need_args": {
+          "default": "Dieser Befehl braucht mehr Argumente – du hast %count% angegeben, nötig sind mindestens %neededCount%."
+        },
+        "updated_roles": {
+          "default": "✅ Rollen entsprechend deiner Auswahl aktualisiert"
+        },
+        "added_role": {
+          "default": "✅ Rolle %role% hinzugefügt"
+        },
+        "removed_role": {
+          "default": "✅ Rolle %role% entfernt"
+        },
+        "not_enough_permissions": {
+          "default": "Dafür hast du anscheinend nicht genug Rechte."
+        }
+      }
+    }
+  },
+  "admin-tools": {
+    "role-bans": {
+      "content": {
+        "reason": {
+          "default": "Hat eine gesperrte Rolle erhalten"
+        }
+      }
+    }
+  },
+  "afk-system": {
+    "config": {
+      "content": {
+        "sessionEndedSuccessfully": {
+          "default": "✅ Dein AFK-Status wurde entfernt. Willkommen zurück!"
+        },
+        "sessionStartedSuccessfully": {
+          "default": "✅ Du bist jetzt AFK. Wenn dich jemand erwähnt, während du AFK bist, sagen wir Bescheid."
+        },
+        "afkUserWithReason": {
+          "default": "ℹ %user% ist gerade AFK mit folgendem Grund: \"%reason%\"."
+        },
+        "afkUserWithoutReason": {
+          "default": "ℹ %user% ist gerade AFK."
+        },
+        "autoEndMessage": {
+          "default": "Willkommen zurück 👋!\nDu bist nicht mehr AFK, weil du eine Nachricht geschrieben hast. Mit `/afk start` startest du eine neue Session – deaktiviere `auto-end`, wenn sie nicht automatisch enden soll."
+        }
+      }
+    }
+  },
+  "anti-ghostping": {
+    "config": {
+      "content": {
+        "youJustGotGhostPinged": {
+          "default": "%mentions%,\ndu wurdest gerade von %authorMention% geghostpingt. Die Nachricht war: \"%msgContent%\""
+        }
+      }
+    }
+  },
+  "auto-thread": {
+    "config": {
+      "content": {
+        "threadName": {
+          "default": "Kommentare"
+        }
+      }
+    }
+  },
+  "betterstatus": {
+    "config": {
+      "content": {
+        "userJoinStatus": {
+          "default": "Willkommen %tag%!"
+        }
+      }
+    }
+  },
+  "color-me": {
+    "strings": {
+      "content": {
+        "created": {
+          "default": "Deine Rolle wurde erstellt."
+        },
+        "createdNoIcon": {
+          "default": "Deine Rolle wurde erstellt, aber ohne Icon – dafür braucht der Server mindestens Boost-Stufe 2."
+        },
+        "updated": {
+          "default": "Deine Rolle wurde aktualisiert."
+        },
+        "updatedNoIcon": {
+          "default": "Deine Rolle wurde aktualisiert, aber ohne Icon – dafür braucht der Server mindestens Boost-Stufe 2."
+        },
+        "removed": {
+          "default": "Deine Rolle wurde entfernt."
+        },
+        "roleLimit": {
+          "default": "Deine Rolle konnte nicht erstellt werden – vermutlich hat der Server das Rollen-Limit von Discord erreicht. Bitte das Team, eine unnötige Rolle zu löschen, oder versuch es später erneut."
+        },
+        "cooldown": {
+          "default": "Deine Rolle kann erst ab %cooldown% wieder bearbeitet werden."
+        },
+        "invalidColor": {
+          "default": "Die angegebene Farbe ist kein gültiger HEX-Code."
+        }
+      }
+    }
+  },
+  "counter": {
+    "config": {
+      "content": {
+        "channelDescription": {
+          "default": "Nächste Zahl: %x%"
+        },
+        "restartOnWrongCountMessage": {
+          "default": "Dank %mention% beginnt das Spiel von vorn – die nächste Zahl ist **%i%**."
+        },
+        "protectionMessage": {
+          "default": "%mention% hat anscheinend die letzte Nachricht gelöscht – die zuletzt gezählte Zahl ist **%number%**."
+        },
+        "strikeMessage": {
+          "default": "%mention%, ich habe deinen Zugriff auf diesen Kanal eingeschränkt, weil du ihn wiederholt falsch benutzt hast."
+        }
+      }
+    },
+    "milestones": {
+      "content": {
+        "sendMessage": {
+          "default": "Glückwunsch %mention%, du hast %milestone%-mal gezählt!"
+        }
+      }
+    }
+  },
+  "economy-system": {
+    "strings": {
+      "content": {
+        "notFound": {
+          "default": "Dieser Artikel wurde nicht gefunden"
+        },
+        "notEnoughMoney": {
+          "default": "Du hast nicht genug Geld für diesen Artikel"
+        },
+        "shopMsg": {
+          "default": {
+            "title": "Shop",
+            "description": "%shopItems%"
+          }
+        },
+        "itemString": {
+          "default": "**%id%** %itemName%, **Preis**: %price%, **verkauft**: %sellcount%"
+        },
+        "cooldown": {
+          "default": "Bitte warte, bevor du diesen Befehl erneut benutzt"
+        },
+        "robSuccess": {
+          "default": "Du hast %user% ausgeraubt und **%earned%** erbeutet"
+        },
+        "dailyReward": {
+          "default": "Du hast **%earned%** als tägliche Belohnung bekommen"
+        },
+        "weeklyReward": {
+          "default": "Du hast **%earned%** als wöchentliche Belohnung bekommen"
+        },
+        "balanceReply": {
+          "default": {
+            "title": "Kontostand von %user%",
+            "fields": [
+              {
+                "name": "Bargeld:",
+                "value": "%balance%"
+              },
+              {
+                "name": "Bank:",
+                "value": "%bank%"
+              },
+              {
+                "name": "Gesamt:",
+                "value": "%total%"
+              }
+            ]
+          }
+        },
+        "userNotFound": {
+          "default": "Ich finde den Nutzer **%user%** nicht"
+        },
+        "buyMsg": {
+          "default": "Du hast den Artikel **%item%** gekauft"
+        },
+        "itemCreate": {
+          "default": "Artikel %name% mit der ID %id% erstellt. Er kostet %price% und gibt die Rolle %role%"
+        },
+        "itemDelete": {
+          "default": "Artikel %name% gelöscht."
+        },
+        "itemEdit": {
+          "default": "Artikel %name% bearbeitet. Schau ihn dir mit `/shop list` an"
+        },
+        "depositMsg": {
+          "default": "**%amount%** auf deine Bank eingezahlt"
+        },
+        "withdrawMsg": {
+          "default": "**%amount%** von deiner Bank abgehoben"
+        },
+        "NaN": {
+          "default": "**%input%** ist keine Zahl"
+        },
+        "msgDropAlreadyEnabled": {
+          "default": "Die Message-Drop-Nachricht ist bereits aktiviert!"
+        },
+        "msgDropEnabled": {
+          "default": "Message-Drop-Nachricht aktiviert"
+        },
+        "msgDropAlreadyDisabled": {
+          "default": "Die Message-Drop-Nachricht ist bereits deaktiviert!"
+        },
+        "msgDropDisabled": {
+          "default": "Message-Drop-Nachricht deaktiviert"
+        },
+        "rebuyItem": {
+          "default": "Diesen Artikel besitzt du bereits"
+        },
+        "multipleMatches": {
+          "default": "Mehrere Artikel passen zur Suche"
+        },
+        "noMatches": {
+          "default": "Es gibt keinen Artikel mit der ID %id% bzw. dem Namen %name%"
+        },
+        "itemDuplicate": {
+          "default": "Es gibt bereits einen Artikel mit der ID %id% oder dem Namen %name%"
+        }
+      }
+    }
+  },
+  "fun": {
+    "config": {
+      "content": {
+        "ikeaMessage": {
+          "default": "Hier ist ein IKEA-Produktname: %name%"
+        },
+        "randomNumberMessage": {
+          "default": "Deine Zufallszahl zwischen %min% und %max%: %number%"
+        },
+        "hugMessage": {
+          "default": "<@%authorID%> umarmt <@%userID%>"
+        },
+        "kissMessage": {
+          "default": "<@%authorID%> küsst <@%userID%>"
+        },
+        "slapMessage": {
+          "default": "<@%authorID%> ohrfeigt <@%userID%>"
+        },
+        "patMessage": {
+          "default": "<@%authorID%> streichelt <@%userID%>"
+        },
+        "8ballMessage": {
+          "default": "Das Orakel hat gesprochen… %answer%"
+        }
+      }
+    }
+  },
+  "guess-the-number": {
+    "config": {
+      "content": {
+        "startMessage": {
+          "default": {
+            "title": "Zahlenraten – Spiel gestartet",
+            "description": "Rate eine Zahl zwischen %min% und %max%. Viel Glück!"
+          }
+        },
+        "endMessage": {
+          "default": {
+            "title": "Zahlenraten – Spiel beendet",
+            "description": "Gutes Spiel, alle zusammen!\nGewonnen hat %winner%.\nDie Zahl war **%number%**.\nInsgesamt gab es etwa **%guessCount% Versuche**."
+          }
+        }
+      }
+    }
+  },
+  "info-commands": {
+    "strings": {
+      "content": {
+        "user_not_found": {
+          "default": "Ich konnte diesen Nutzer nicht finden – versuch es mit einer ID oder Erwähnung"
+        },
+        "channel_not_found": {
+          "default": "Ich konnte diesen Kanal nicht finden – versuch es mit einer ID oder Erwähnung"
+        },
+        "role_not_found": {
+          "default": "Ich konnte diese Rolle nicht finden – versuch es mit einer ID oder Erwähnung"
+        },
+        "avatarMsg": {
+          "default": "Hier ist der Avatar (bitte beachte, dass das Bild urheberrechtlich geschützt sein kann):"
+        }
+      }
+    }
+  },
+  "levels": {
+    "strings": {
+      "content": {
+        "user_not_found": {
+          "default": "⚠️ Zu diesem Nutzer gibt es keine Einträge"
+        },
+        "level_up_message": {
+          "default": "Level Up! Dein neues Level ist **%newLevel%**!"
+        },
+        "level_up_message_with_reward": {
+          "default": "Level Up! Dein neues Level ist **%newLevel%**! Du hast %role% bekommen."
+        },
+        "leaderboard-button-answer": {
+          "default": "Hi %name%, du bist gerade auf **Level %level%** mit **%userXP%**/%nextLevelXP% **XP**. Mehr mit `/profile`."
+        }
+      }
+    }
+  },
+  "massrole": {
+    "strings": {
+      "content": {
+        "done": {
+          "default": "Die Aktion wurde ausgeführt."
+        },
+        "notDone": {
+          "default": "Die Aktion konnte nicht ausgeführt werden, weil dem Bot Rechte fehlen."
+        }
+      }
+    }
+  },
+  "moderation": {
+    "strings": {
+      "content": {
+        "no_permissions": {
+          "default": "Das darfst du nicht. Dafür brauchst du mindestens Moderations-Stufe %required_level%"
+        },
+        "user_not_found": {
+          "default": "Ich konnte diesen Nutzer nicht finden – versuch es mit einer ID oder Erwähnung"
+        },
+        "missing_reason": {
+          "default": "Bitte gib einen Grund an"
+        },
+        "this_is_a_mod": {
+          "default": "Diese Aktion kannst du nicht gegen Teammitglieder ausführen."
+        },
+        "submitted-report-message": {
+          "default": "Danke für deine Meldung zu %user%. Ich habe das Team benachrichtigt und einen [verschlüsselten Ausschnitt](<%mURL%>) der aktuellen Nachrichten in diesem Kanal mitgeschickt. Bitte stell sicher, dass Bots und Team dir schreiben können, falls Rückfragen kommen."
+        },
+        "mute_message": {
+          "default": "Du wurdest von %user% stummgeschaltet. Grund: **%reason%**"
+        },
+        "channel_mute": {
+          "default": "Du wurdest von %user% in %channel% stummgeschaltet. Grund: **%reason%**"
+        },
+        "remove-channel_mute": {
+          "default": "Deine Stummschaltung in %channel% wurde von %user% aufgehoben. Grund: **%reason%**"
+        },
+        "tmpmute_message": {
+          "default": "Du wurdest von %user% vorübergehend stummgeschaltet. Grund: **%reason%**. Läuft ab am %date%."
+        },
+        "quarantine_message": {
+          "default": "Du wurdest von %user% in Quarantäne gesetzt. Grund: **%reason%**"
+        },
+        "tmpquarantine_message": {
+          "default": "Du wurdest von %user% vorübergehend in Quarantäne gesetzt. Grund: **%reason%**. Läuft ab am %date%"
+        },
+        "unquarantine_message": {
+          "default": "Deine Quarantäne wurde von %user% aufgehoben. Grund: **%reason%**"
+        },
+        "unmute_message": {
+          "default": "Deine Stummschaltung wurde von %user% aufgehoben. Grund: **%reason%**"
+        },
+        "kick_message": {
+          "default": "Du wurdest von %user% gekickt. Grund: **%reason%**"
+        },
+        "ban_message": {
+          "default": "Du wurdest von %user% gebannt. Grund: **%reason%**"
+        },
+        "tmpban_message": {
+          "default": "Du wurdest von %user% vorübergehend gebannt. Grund: **%reason%**. Läuft ab am %date%"
+        },
+        "warn_message": {
+          "default": "Du wurdest von %user% verwarnt. Grund: **%reason%**"
+        },
+        "lock_channel_message": {
+          "default": "Dieser Kanal wurde von %user% gesperrt. Grund: %reason%"
+        },
+        "unlock_channel_message": {
+          "default": "Dieser Kanal wurde von %user% entsperrt"
+        }
+      }
+    },
+    "antiSpam": {
+      "content": {
+        "message": {
+          "default": "Anti-Spam: Ich habe gegen <@%userid%> gehandelt. Grund: **%reason%**"
+        }
+      }
+    },
+    "verification": {
+      "content": {
+        "cooldown-message": {
+          "default": "⏳ Bitte warte %t%, bevor du es erneut versuchst."
+        },
+        "captcha-message": {
+          "default": "Willkommen! Bitte bestätige, dass du ein Mensch bist. Du hast dafür zwei Minuten Zeit."
+        },
+        "manual-verification-message": {
+          "default": "Willkommen! Ein Teammitglied prüft deinen Account in Kürze. Ich melde mich, sobald es Neuigkeiten gibt."
+        },
+        "captcha-failed-message": {
+          "default": "Die Verifizierung ist leider fehlgeschlagen. Deshalb muss ich Maßnahmen gegen dich ergreifen – sorry."
+        },
+        "captcha-succeeded-message": {
+          "default": "Danke! Du bist verifiziert und hast jetzt Zugriff auf den ganzen Server. Viel Spaß <3"
+        },
+        "verify-channel-first-message": {
+          "default": "Willkommen! Bitte verifiziere dich mit dem Button unten. Das ist nötig, um auf den Server zuzugreifen."
+        }
+      }
+    },
+    "lockdown": {
+      "content": {
+        "lockdownMessage": {
+          "default": "🔒 **Server-Lockdown** – Der Server ist gerade im Lockdown. Grund: %reason%"
+        },
+        "liftMessage": {
+          "default": "🔓 **Lockdown aufgehoben** – Ihr könnt wieder schreiben."
+        }
+      }
+    }
+  },
+  "ping-on-vc-join": {
+    "config": {
+      "content": {
+        "message": {
+          "default": "%tag% ist dem Sprachkanal %vc% beigetreten"
+        },
+        "pn_message": {
+          "default": "Hi, du bist dem Sprachkanal %vc% beigetreten. Schön (;"
+        }
+      }
+    }
+  },
+  "ping-protection": {
+    "configuration": {
+      "content": {
+        "autoModBlockMessage": {
+          "default": "Deine Nachricht wurde blockiert, weil du einen geschützten Nutzer bzw. eine geschützte Rolle pingen wolltest. Der Inhalt kann je nach Einstellung gespeichert werden."
+        },
+        "pingWarningMessage": {
+          "default": {
+            "title": "Du darfst %target-name% nicht pingen!",
+            "description": "<@%pinger-id%>, du darfst %target-mention% wegen deiner Rolle nicht pingen. Wen du nicht pingen darfst, siehst du mit `/ping-protection list protected`.\n\nWenn du geantwortet hast, schalte die Erwähnung in der Antwort aus.",
+            "image": "https://scnx-cdn.scootkit.net/1769198862209-rJfCVKzAuo6uQLhPUe9o2P6ArJkDBSVUCEyUQM6bqt5WFKWK.gif",
+            "color": "#ed4245"
+          }
+        },
+        "kickPunishmentMessage": {
+          "default": "Du wurdest von **%guild-name%** gekickt, weil du innerhalb von %timeframe% Tagen %pings%-mal geschützte Nutzer/Rollen gepingt hast."
+        }
+      }
+    },
+    "moderation": {
+      "content": {
+        "actionLogMessage": {
+          "default": {
+            "title": "Moderationsaktion gegen %pinger-name%",
+            "description": "Ich habe gegen %pinger-mention% gehandelt, weil innerhalb von %timeframe% Tagen %pings%-mal geschützte Nutzer/Rollen gepingt wurden.\n **Aktion:** %action%\n**Dauer:** %duration% Minuten",
+            "color": "#ed4245"
+          }
+        }
+      }
+    }
+  },
+  "reminders": {
+    "config": {
+      "content": {
+        "notificationMessage": {
+          "default": {
+            "title": "🔔 Erinnerung",
+            "color": "#F1C40F",
+            "description": "%message%",
+            "message": "%mention%"
+          }
+        }
+      }
+    }
+  },
+  "staff-management-system": {
+    "infractions": {
+      "content": {
+        "suspensionMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%user%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %issuer-name% • Fall #%case-id%",
+                  "iconURL": "%issuer-avatar%"
+                },
+                "title": "⛔ Suspendierung",
+                "description": "**Teammitglied:** %user%\n**Dauer:** %duration%\n**Endet:** %end-date%\n**Grund:** %reason%",
+                "color": "#ed4245",
+                "thumbnailURL": "%user-avatar%"
+              }
+            ]
+          }
+        },
+        "infractionMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%user%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %issuer-name% • Fall #%case-id%",
+                  "iconURL": "%issuer-avatar%"
+                },
+                "title": "⚠️ Neuer Verstoß",
+                "description": "**Teammitglied:** %user%\n**Maßnahme:** %type%\n**Läuft ab:** %end-date%\n**Grund:** %reason%",
+                "color": "#e67e22",
+                "thumbnailURL": "%user-avatar%"
+              }
+            ]
+          }
+        },
+        "infractionDmMessage": {
+          "default": {
+            "_schema": "v3",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %issuer-name% • Fall #%case-id%"
+                },
+                "title": "⚠️ Dir wurde ein Verstoß eingetragen",
+                "description": "**Art:** %type%\n**Grund:** %reason%\n**Läuft ab:** %end-date%",
+                "color": "#e67e22"
+              }
+            ]
+          }
+        },
+        "suspensionDmMessage": {
+          "default": {
+            "_schema": "v3",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %issuer-name% • Fall #%case-id%"
+                },
+                "title": "⛔ Suspendierung",
+                "description": "Du wurdest vorübergehend suspendiert.\n\n**Dauer:** %duration%\n**Rückkehr:** %end-date%\n**Grund:** %reason%",
+                "color": "#ed4245"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "promotions": {
+      "content": {
+        "promotionMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%user-mention%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %promoter-name%",
+                  "imageURL": "%promoter-avatar%"
+                },
+                "title": "🎉 Neue Beförderung!",
+                "description": "Glückwunsch, du wurdest zu **%new-role-name%** befördert!\n\n**Befördert zu:** %new-role-mention%\n**Im Auftrag von:** %promoter-mention%\n**Grund:** %reason%",
+                "color": "#f1c40f",
+                "thumbnailURL": "%user-avatar%"
+              }
+            ]
+          }
+        },
+        "promotionDmMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%user-mention%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %promoter-name%",
+                  "imageURL": "%promoter-avatar%"
+                },
+                "title": "🎉 Neue Beförderung!",
+                "description": "Glückwunsch, du wurdest zu **%new-role-name%** befördert!\n\n**Befördert zu:** %new-role-mention%\n**Im Auftrag von:** %promoter-mention%\n**Grund:** %reason%",
+                "color": "#f1c40f",
+                "thumbnailURL": "%user-avatar%"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "reviews": {
+      "content": {
+        "ratingMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%staff-mention%",
+            "embeds": [
+              {
+                "title": "🌟 Neue Team-Bewertung",
+                "description": "**Teammitglied:** %staff-mention%\n**Bewertet von:** %reviewer-mention%\n\n**Bewertung:** %stars% (%rating%/5)\n**Kommentar:**\n%comment%",
+                "color": "#f1c40f",
+                "thumbnailURL": "%staff-avatar%"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "profiles": {
+      "content": {
+        "profileEmbedMessage": {
+          "default": {
+            "_schema": "v3",
+            "embeds": [
+              {
+                "title": "Team-Profil: %nickname%",
+                "description": "%intro%",
+                "color": "#2b2d31",
+                "thumbnailURL": "%avatar%",
+                "fields": [
+                  {
+                    "name": "Status",
+                    "value": "%status%",
+                    "inline": true
+                  },
+                  {
+                    "name": "Durchschnittliche Bewertung",
+                    "value": "%rating%",
+                    "inline": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "activity-checks": {
+      "content": {
+        "checkMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%staff-mention%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %initiator%"
+                },
+                "title": "📋 Team-Aktivitätscheck",
+                "description": "Bitte bestätige deine Aktivität mit dem Button unten bis %end-time%. Der Check bleibt %duration% Stunde(n) offen; wer bis zum Ende nicht antwortet, kann als nicht bestanden gewertet werden, sofern keine Ausnahme gilt.",
+                "fields": [
+                  {
+                    "name": "Kurzübersicht",
+                    "value": "Endet: %end-time%\nDauer: %duration% Stunde(n)"
+                  }
+                ],
+                "color": "#3498db"
+              }
+            ]
+          }
+        },
+        "endCheckMessage": {
+          "default": {
+            "_schema": "v3",
+            "content": "%staff-mention%",
+            "embeds": [
+              {
+                "author": {
+                  "name": "Gezeichnet, %initiator%"
+                },
+                "title": "📋 Team-Aktivitätscheck (beendet)",
+                "description": "Dieser Aktivitätscheck ist abgeschlossen.",
+                "fields": [
+                  {
+                    "name": "Kurzübersicht",
+                    "value": "Beendet: %end-time%\nDauer: %duration% Stunde(n)\nAntworten gesamt: %responded-count%"
+                  }
+                ],
+                "color": "#FF0000"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "starboard": {
+    "config": {
+      "content": {
+        "message": {
+          "default": {
+            "message": "**%stars%** %emoji% in %channelMention%",
+            "color": "#f5c91b",
+            "description": "%content%",
+            "image": "%image%",
+            "author": {
+              "name": "%displayName%",
+              "img": "%userAvatar%",
+              "url": "%link%"
+            }
+          }
+        }
+      }
+    }
+  },
+  "suggestions": {
+    "config": {
+      "content": {
+        "threadName": {
+          "default": "Kommentare"
+        },
+        "successfullySubmitted": {
+          "default": "Vorschlag %id% eingereicht."
+        },
+        "teamChange": {
+          "default": "Hi, ein Vorschlag, dem du folgst, wurde vom Team aktualisiert – hier lesen: %url%"
+        },
+        "unansweredSuggestion": {
+          "default": {
+            "title": "Vorschlag #%id%",
+            "description": "%suggestion%",
+            "color": "#F1C40F",
+            "thumbnail": "%avatarURL%",
+            "author": {
+              "name": "%tag%",
+              "img": "%avatarURL%"
+            },
+            "fields": [
+              {
+                "name": "Status",
+                "value": "Noch keine Antwort vom Team"
+              }
+            ]
+          }
+        },
+        "deniedSuggestion": {
+          "default": {
+            "title": "Vorschlag #%id%",
+            "description": "%suggestion%",
+            "color": "#E74C3C",
+            "thumbnail": "%avatarURL%",
+            "author": {
+              "name": "%tag%",
+              "img": "%avatarURL%"
+            },
+            "fields": [
+              {
+                "name": "Status: ABGELEHNT",
+                "value": "Abgelehnt von %adminUser% mit folgender Begründung: \"%adminMessage%\""
+              }
+            ]
+          }
+        },
+        "approvedSuggestion": {
+          "default": {
+            "title": "Vorschlag #%id%",
+            "description": "%suggestion%",
+            "color": "#2ECC71",
+            "thumbnail": "%avatarURL%",
+            "author": {
+              "name": "%tag%",
+              "img": "%avatarURL%"
+            },
+            "fields": [
+              {
+                "name": "Status: ANGENOMMEN",
+                "value": "Angenommen von %adminUser% mit folgender Begründung: \"%adminMessage%\""
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "temp-channels": {
+    "config": {
+      "content": {
+        "noMicChannelMessage": {
+          "default": "Willkommen in deinem No-Mic-Kanal – du siehst ihn nur, solange du im zugehörigen Sprachkanal bist"
+        },
+        "dm": {
+          "default": "Ich habe deinen neuen Sprachkanal erstellt und dich hineinverschoben – viel Spaß ^^"
+        },
+        "notInChannel": {
+          "default": "Dafür musst du in deinem temporären Kanal sein"
+        },
+        "modeSwitched": {
+          "default": "Der Zugriffsmodus deines Kanals ist jetzt: %mode%"
+        },
+        "userAdded": {
+          "default": "%user% wurde zu deinem Kanal hinzugefügt und kann ihn jetzt jederzeit betreten"
+        },
+        "userRemoved": {
+          "default": "%user% wurde aus deinem Kanal entfernt und kann ihn nicht mehr betreten, solange er privat ist"
+        },
+        "listUsers": {
+          "default": "Diese Nutzer haben Zugriff auf deinen Kanal: %users%"
+        },
+        "channelEdited": {
+          "default": "Dein Kanal wurde bearbeitet"
+        },
+        "edit-error": {
+          "default": "Beim Bearbeiten deines Kanals ist ein Fehler aufgetreten. Mindestens eine Einstellung konnte nicht übernommen werden – vielleicht fehlen Rechte oder ein Wert ist ungültig"
+        },
+        "settingsMessage": {
+          "default": "Hier kannst du die Einstellungen deines temporären Kanals ändern"
+        },
+        "maxActiveChannelsMessage": {
+          "default": "⚠️ Die maximale Anzahl temporärer Kanäle ist erreicht. Bitte versuch es später erneut."
+        }
+      }
+    }
+  },
+  "tickets": {
+    "config": {
+      "content": {
+        "ticket-create-message": {
+          "default": "Klick auf den Button unten, um das Team zu kontaktieren und ein Ticket zu erstellen"
+        },
+        "userDM": {
+          "default": "Danke, dass du dich beim Support (Kategorie „%type%“) gemeldet hast. Hier ist dein Transkript: %transcriptURL%"
+        },
+        "creation-message": {
+          "default": {
+            "title": "📥 Neues Ticket #%id%",
+            "color": "#2ECC71",
+            "message": "%rolePings%",
+            "fields": [
+              {
+                "name": "👤 Nutzer",
+                "value": "%userMention%",
+                "inline": true
+              },
+              {
+                "name": "☕ Thema",
+                "value": "%ticketTopic%",
+                "inline": true
+              },
+              {
+                "name": "ℹ️ Information",
+                "value": "Dein Anliegen ist gelöst? Klick auf den Button unten. Diese Nachricht ist angepinnt."
+              }
+            ]
+          }
+        },
+        "ticket-create-button": {
+          "default": "Ticket erstellen 🎫"
+        },
+        "ticket-close-button": {
+          "default": "❎ Ticket schließen"
+        }
+      }
+    }
+  },
+  "twitch-notifications": {
+    "streamers": {
+      "content": {
+        "liveMessage": {
+          "default": "Hey, %streamer% ist live auf Twitch mit %game%! Schau vorbei: %url%"
+        }
+      }
+    }
+  },
+  "welcomer": {
+    "channels": {
+      "content": {
+        "welcome-button-content": {
+          "default": "Hallo sagen 👋"
+        },
+        "welcome-button-message": {
+          "default": "%clickUserMention% begrüßt %userMention% :wave:"
+        }
+      }
+    }
+  }
+}

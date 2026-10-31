@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const {EventEmitter} = require('events');
+const moduleConfig = require('./moduleConfig');
 
 const ROOT = path.resolve(__dirname, '..');
 const MAIN_FILE = path.join(ROOT, 'main.js');
@@ -18,7 +19,10 @@ const FATAL_CODES = {
     66: 'Der Bot wurde vom Server entfernt',
     78: 'Konfigurationsfehler – bitte Einstellungen prüfen'
 };
-const READY_MARKER = 'The bot initiated successfully';
+const LANGUAGES = ['de', 'en'];
+const READY_MARKERS = LANGUAGES
+    .map(l => readJSON(path.join(ROOT, 'locales', `${l}.json`), {main: {}}).main['bot-ready'])
+    .filter(Boolean);
 const SECRET_FIELDS = ['token'];
 const FALLBACK_LABELS = {
     token: 'Bot-Token',
@@ -108,13 +112,16 @@ function listAvailableModules() {
         return [];
     }
     const modules = [];
+    const german = readJSON(path.join(__dirname, 'labels.de.json'), {}).__modules || {}; // eslint-disable-line no-underscore-dangle
     for (const entry of entries) {
         const meta = readJSON(path.join(dir, entry.name, 'module.json'), null);
         if (!meta) continue;
+        const englishName = (typeof meta.humanReadableName === 'object' ? meta.humanReadableName.en : meta.humanReadableName) || meta.name || entry.name;
+        const de = german[englishName];
         modules.push({
             name: meta.name || entry.name,
-            humanName: (typeof meta.humanReadableName === 'object' ? meta.humanReadableName.en : meta.humanReadableName) || meta.name || entry.name,
-            description: (typeof meta.description === 'object' ? meta.description.en : meta.description) || '',
+            humanName: de ? de[0] : englishName,
+            description: de ? de[1] : (typeof meta.description === 'object' ? meta.description.en : meta.description) || '',
             tags: meta.tags || [],
             beta: !!meta.beta
         });
@@ -156,6 +163,26 @@ function createRuntime(entry) {
         logs: [],
         logSeq: 0
     };
+}
+
+/**
+ * Replaces the old SCNX footer defaults in an existing strings.json.
+ * @param {string} configDir
+ */
+function removeLegacyBranding(configDir) {
+    const file = path.join(configDir, 'strings.json');
+    const strings = readJSON(file, null);
+    if (!strings) return;
+    let changed = false;
+    if (typeof strings.footer === 'string' && strings.footer.toLowerCase().includes('scnx')) {
+        strings.footer = 'Powered by TeamZORA';
+        changed = true;
+    }
+    if (typeof strings.footerImgUrl === 'string' && strings.footerImgUrl.includes('scnx.xyz')) {
+        strings.footerImgUrl = '';
+        changed = true;
+    }
+    if (changed) writeJSON(file, strings);
 }
 
 /**
@@ -221,6 +248,7 @@ class BotManager extends EventEmitter {
             color: bot.entry.color,
             autoStart: !!bot.entry.autoStart,
             autoRestart: bot.entry.autoRestart !== false,
+            language: bot.entry.language || 'de',
             createdAt: bot.entry.createdAt,
             guildID: config.guildID || '',
             prefix: config.prefix || '',
@@ -256,9 +284,10 @@ class BotManager extends EventEmitter {
             color: input.color || '#ffffff',
             autoStart: !!input.autoStart,
             autoRestart: input.autoRestart !== false,
+            language: LANGUAGES.includes(input.language) ? input.language : 'de',
             createdAt: new Date().toISOString()
         };
-        const config = defaultBotConfig();
+        const config = {...defaultBotConfig(), ...moduleConfig.coreConfigDefaults(entry.language)};
         for (const key of ['token', 'guildID', 'prefix', 'logChannelID', 'timezone', 'user_presence']) {
             if (typeof input[key] === 'string' && input[key].trim() !== '') config[key] = input[key].trim();
         }
@@ -304,6 +333,7 @@ class BotManager extends EventEmitter {
         if (typeof input.color === 'string' && (/^#[0-9a-f]{6}$/i).test(input.color)) bot.entry.color = input.color;
         if (typeof input.autoStart === 'boolean') bot.entry.autoStart = input.autoStart;
         if (typeof input.autoRestart === 'boolean') bot.entry.autoRestart = input.autoRestart;
+        if (LANGUAGES.includes(input.language)) bot.entry.language = input.language;
         this.persist();
         this.emitUpdate(bot);
     }
@@ -364,9 +394,11 @@ class BotManager extends EventEmitter {
         bot.readyAt = null;
         bot.startedAt = new Date().toISOString();
         fs.mkdirSync(this.dataDir(id), {recursive: true});
+        removeLegacyBranding(this.configDir(id));
         this.pushLog(bot, 'system', 'Starte Bot…');
 
-        const child = spawn(process.execPath, [MAIN_FILE, this.configDir(id), this.dataDir(id)], {
+        const lang = bot.entry.language || 'de';
+        const child = spawn(process.execPath, [MAIN_FILE, this.configDir(id), this.dataDir(id), `--lang=${lang}`], {
             cwd: ROOT,
             env: {...process.env, SCNX_EXIT_CODES: '1'},
             stdio: ['pipe', 'pipe', 'pipe']
@@ -407,7 +439,7 @@ class BotManager extends EventEmitter {
 
         const clean = line.replace(/\u001b\[[0-9;]*m/g, '');
         this.pushLog(bot, type, clean);
-        if (bot.status === 'starting' && clean.includes(READY_MARKER)) {
+        if (bot.status === 'starting' && READY_MARKERS.some(m => clean.includes(m))) {
             bot.status = 'running';
             bot.readyAt = new Date().toISOString();
             bot.restarts = 0;
@@ -513,6 +545,51 @@ class BotManager extends EventEmitter {
         bot.logs.push(entry);
         if (bot.logs.length > LOG_LIMIT) bot.logs.splice(0, bot.logs.length - LOG_LIMIT);
         this.emit('log', bot.entry.id, entry);
+    }
+
+    /**
+     * Emoji import status written by the bot (data/emojis.json).
+     * @param {string} id
+     * @returns {Object|null}
+     */
+    emojiStatus(id) {
+        this.get(id);
+        return readJSON(path.join(this.dataDir(id), 'emojis.json'), null);
+    }
+
+    /**
+     * Channels and roles of the bot's server (data/guild-cache.json, written by the bot).
+     * @param {string} id
+     * @returns {Object|null}
+     */
+    guildCache(id) {
+        this.get(id);
+        return readJSON(path.join(this.dataDir(id), 'guild-cache.json'), null);
+    }
+
+    /**
+     * Schema and stored values of a module for the content editor.
+     * @param {string} id
+     * @param {string} moduleName
+     * @returns {Array<Object>}
+     */
+    moduleContent(id, moduleName) {
+        const bot = this.get(id);
+        return moduleConfig.readModule(this.configDir(id), moduleName, bot.entry.language || 'de');
+    }
+
+    /**
+     * Saves one config file of a module and reloads a running bot.
+     * @param {string} id
+     * @param {string} moduleName
+     * @param {string} filename
+     * @param {*} value
+     */
+    saveModuleContent(id, moduleName, filename, value) {
+        const bot = this.get(id);
+        moduleConfig.writeModuleFile(this.configDir(id), moduleName, filename, value, bot.entry.language || 'de');
+        this.pushLog(bot, 'system', `Inhalte von ${moduleName}/${filename} gespeichert.`);
+        if (bot.status === 'running') this.sendCommand(id, 'reload');
     }
 
     logs(id) {

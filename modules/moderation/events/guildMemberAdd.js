@@ -176,7 +176,7 @@ module.exports.runJoinGate = runJoinGate;
 async function sendDMPart(verificationConfig, guildMember) {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!guildMember.client.scnxSetup) return guildMember.client.logger.error('[moderation] Captcha Generation is only available if your bot has an SCNX Integration set up.');
+            if (!guildMember.client.scnxSetup) return guildMember.client.logger.error('[moderation] Captcha generation is not available in this version.');
             const captcha = await require('../../../src/functions/scnx-integration').generateCaptcha(verificationConfig.captchaLevel);
             await guildMember.user.send(embedType(verificationConfig['captcha-message'], {}, {
                 files: [new AttachmentBuilder(captcha.buffer, {name: 'you-call-it-captcha-we-call-it-ai-training.png'})]

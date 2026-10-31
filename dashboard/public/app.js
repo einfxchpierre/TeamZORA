@@ -1,4 +1,4 @@
-/* global icon, hydrateIcons */
+/* global icon, hydrateIcons, openContentEditor, renderEmojiTab */
 const state = {
     bots: new Map(),
     meta: null,
@@ -170,8 +170,8 @@ function connectStream() {
 
 function parseRoute() {
     const hash = location.hash.replace(/^#/, '') || '/';
-    const match = hash.match(/^\/bot\/(?<id>[a-f0-9]{12})(?:\/(?<tab>[a-z]+))?$/);
-    if (match) return {name: 'bot', id: match.groups.id, tab: match.groups.tab || 'console'};
+    const match = hash.match(/^\/bot\/(?<id>[a-f0-9]{12})(?:\/(?<tab>[a-z]+))?(?:\/(?<module>[a-z0-9_-]+))?$/i);
+    if (match) return {name: 'bot', id: match.groups.id, tab: match.groups.tab || 'console', module: match.groups.module || null};
     return {name: 'overview'};
 }
 
@@ -335,7 +335,7 @@ function renderOverview() {
 function renderBot() {
     if (!state.detail) return;
     const id = state.detail.id;
-    const tabs = [['console', 'terminal', 'Konsole'], ['modules', 'puzzle', 'Module'], ['settings', 'settings', 'Einstellungen']];
+    const tabs = [['console', 'terminal', 'Konsole'], ['modules', 'puzzle', 'Module'], ['content', 'pencil', 'Inhalte'], ['emojis', 'sparkle', 'Emojis'], ['settings', 'settings', 'Einstellungen']];
     $('#view').innerHTML = `
         <div id="bot-head"></div>
         <div class="tabs">
@@ -345,7 +345,59 @@ function renderBot() {
     renderBotHead();
     if (state.tab === 'modules') renderModules();
     else if (state.tab === 'settings') renderSettings();
+    else if (state.tab === 'content') renderContent();
+    else if (state.tab === 'emojis') renderEmojiPage();
     else renderConsole();
+}
+
+/* ---------- Content (module texts & settings) ---------- */
+
+function moduleLabel(name) {
+    if (name === '_core') return 'Allgemeine Bot-Texte';
+    const m = state.meta.modules.find(x => x.name === name);
+    return m ? m.humanName : name;
+}
+
+function renderContent() {
+    const d = state.detail;
+    const bot = state.bots.get(d.id) || d;
+    if (state.route.module) {
+        openContentEditor({
+            container: $('#tab-content'),
+            botId: d.id,
+            botName: d.name,
+            moduleName: state.route.module,
+            moduleLabel: moduleLabel(state.route.module),
+            running: bot.status === 'running',
+            api,
+            toast,
+            esc
+        }).catch(e => toast(e.message, true));
+        return;
+    }
+    const enabled = state.meta.modules.filter(m => d.modules[m.name]);
+    function card(name, title, desc, iconName) {
+        return `
+        <a class="card module content-card" href="#/bot/${d.id}/content/${esc(name)}">
+            <span class="stat-icon">${icon(iconName)}</span>
+            <div class="module-body"><strong>${esc(title)}</strong><p>${esc(desc)}</p></div>
+            ${icon('chevron')}
+        </a>`;
+    }
+    $('#tab-content').innerHTML = `
+        <p class="muted" style="margin-top:0">Bearbeite Texte, Embeds, Kanäle, Rollen und alle weiteren Einstellungen deiner aktiven Module. Gespeicherte Änderungen übernimmt der Bot sofort.</p>
+        <div class="module-grid">
+            ${card('_core', 'Allgemeine Bot-Texte', 'Embed-Footer, Systemnachrichten und Texte, die alle Module nutzen', 'chat')}
+            ${enabled.map(m => card(m.name, m.humanName, m.description, 'pencil')).join('')}
+        </div>
+        ${enabled.length ? '' : `<div class="card empty" style="margin-top:16px"><h3>Keine aktiven Module</h3><p>Aktiviere zuerst Module im Tab „Module“.</p><a class="btn btn-primary" href="#/bot/${d.id}/modules">${icon('puzzle')}Zu den Modulen</a></div>`}`;
+}
+
+function renderEmojiPage() {
+    const d = state.detail;
+    const bot = state.bots.get(d.id) || d;
+    renderEmojiTab($('#tab-content'), {botId: d.id, api, toast, running: bot.status === 'running'})
+        .catch(e => toast(e.message, true));
 }
 
 function renderBotHead() {
@@ -464,7 +516,10 @@ function renderModuleGrid() {
                 <p>${esc(m.description)}</p>
                 <span class="tag">${esc(m.tags.join(' · ') || m.name)}${m.beta ? ' · Beta' : ''}</span>
             </div>
-            <span class="switch"><input type="checkbox" data-module="${esc(m.name)}" ${state.moduleDraft[m.name] ? 'checked' : ''}><span class="track"></span></span>
+            <div class="module-side">
+                <span class="switch"><input type="checkbox" data-module="${esc(m.name)}" ${state.moduleDraft[m.name] ? 'checked' : ''}><span class="track"></span></span>
+                ${state.detail.modules[m.name] ? `<a class="icon-btn icon-btn-sm" href="#/bot/${state.detail.id}/content/${esc(m.name)}" title="Inhalte bearbeiten">${icon('pencil')}</a>` : ''}
+            </div>
         </label>`).join('') : '<div class="muted">Keine Module gefunden.</div>';
     renderSavebar();
 }
@@ -531,6 +586,10 @@ function renderSettings() {
                     <div class="card-head"><h3>${icon('settings')}Dashboard</h3></div>
                     <div class="card-pad">
                         <label class="field"><span>Anzeigename</span><input id="dash-name" value="${esc(d.name)}" maxlength="64" required></label>
+                        <label class="field"><span>Sprache des Bots</span><select id="dash-language">
+                            <option value="de" ${d.language === 'de' ? 'selected' : ''}>Deutsch</option>
+                            <option value="en" ${d.language === 'en' ? 'selected' : ''}>English</option>
+                        </select><small>Gilt nach einem Neustart. Neue Standardtexte werden in dieser Sprache erzeugt.</small></label>
                         <div>
                             <div class="toggle-row"><div><strong>Autostart</strong><small>Startet den Bot automatisch mit dem Dashboard.</small></div>
                                 <span class="switch"><input type="checkbox" id="dash-autostart" ${d.autoStart ? 'checked' : ''}><span class="track"></span></span></div>
@@ -600,6 +659,7 @@ function openCreateModal() {
                     <label class="field"><span>Log-Kanal-ID</span><input name="logChannelID" inputmode="numeric" placeholder="optional"></label>
                     <label class="field"><span>Prefix</span><input name="prefix" value="!" maxlength="5"></label>
                     <label class="field"><span>Zeitzone</span><input name="timezone" value="Europe/Berlin"></label>
+                    <label class="field"><span>Sprache</span><select name="language"><option value="de" selected>Deutsch</option><option value="en">English</option></select></label>
                 </div>
                 <div>
                     <div class="toggle-row"><div><strong>Autostart</strong><small>Mit dem Dashboard automatisch starten</small></div>
@@ -664,7 +724,8 @@ async function saveDashSettings() {
     const detail = await run(() => api('PUT', `/api/bots/${state.detail.id}/settings`, {
         name: $('#dash-name').value,
         autoStart: $('#dash-autostart').checked,
-        autoRestart: $('#dash-autorestart').checked
+        autoRestart: $('#dash-autorestart').checked,
+        language: $('#dash-language').value
     }), 'Gespeichert');
     if (detail) state.detail = detail;
 }

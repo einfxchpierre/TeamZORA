@@ -722,11 +722,6 @@ function embedTypeSchemaV4(input, args = {}, optionsToKeep = {}, mergeComponents
         components.push(kept);
     }
 
-    // Add SCNX branding for non-paid plans
-    if (client.scnxSetup && !['PROFESSIONAL', 'PRO', 'ENTERPRISE'].includes(client.scnxData.plan)) {
-        components.push(new TextDisplayBuilder().setContent('-# Powered by scnx.xyz \u26A1'));
-    }
-
     optionsToKeep.components = components;
     optionsToKeep.content = null;
     optionsToKeep.embeds = [];

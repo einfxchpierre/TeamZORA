@@ -188,9 +188,7 @@ module.exports.run = async function (interaction) {
                     `### ${localize('help', 'stats-title')}\n${localize('help', 'stats-content', {
                         am: Object.keys(interaction.client.modules).length,
                         rc: interaction.client.commands.length,
-                        v: interaction.client.scnxSetup ? interaction.client.scnxData.bot.version : null,
-                        si: interaction.client.scnxSetup ? interaction.client.scnxData.bot.instanceID : null,
-                        pl: interaction.client.scnxSetup ? localize('scnx', 'plan-' + interaction.client.scnxData.plan) : null,
+                        v: require('../../package.json').version,
                         lr: formatDate(interaction.client.readyAt),
                         lR: formatDate(interaction.client.botReadyAt)
                     })}`

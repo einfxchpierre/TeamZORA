@@ -43,6 +43,19 @@ module.exports.commands = [
         }
     },
     {
+        command: 'emojis',
+        description: 'Imports the custom emoji set (emojis reset: removes and re-imports all)',
+        run: async function (inputElement) {
+            const customEmojis = require('./functions/customEmojis');
+            if (inputElement.input.split(' ')[1] === 'reset') {
+                const removed = await customEmojis.removeAll(inputElement.client);
+                console.log(`Removed ${removed} custom emojis.`);
+            }
+            await customEmojis.sync(inputElement.client);
+            console.log(`Custom emojis available: ${customEmojis.state.byName.size}`);
+        }
+    },
+    {
         command: 'modules',
         description: 'Shows all modules of the bot',
         run: async function (inputElement) {

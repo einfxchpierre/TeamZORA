@@ -5,7 +5,7 @@ const {startGame} = require('../guessTheNumber');
 module.exports.beforeSubcommand = async function (interaction) {
     if (interaction.member.roles.cache.filter(m => interaction.client.configurations['guess-the-number']['config'].adminRoles.includes(m.id)).size === 0) return interaction.reply({
         ephemeral: true,
-        content: '⚠️ To use this command, you need to be added to the adminRoles option in the SCNX-Dashboard.'
+        content: '⚠️ To use this command, you need to be added to the adminRoles option in the dashboard.'
     });
     if (interaction.client.configurations['guess-the-number']['channel'].enabled && interaction.client.configurations['guess-the-number']['channel'].channel === interaction.channel.id) return interaction.reply({
         content: '⚠️ ' + localize('guess-the-number', 'gamechannel-modus'),

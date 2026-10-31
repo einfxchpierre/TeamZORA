@@ -82,6 +82,19 @@
       "type": "timezone"
     },
     {
+      "name": "useCustomEmojis",
+      "humanName": {
+        "en": "Use custom emojis",
+        "de": "Eigene Emojis verwenden"
+      },
+      "default": true,
+      "type": "boolean",
+      "description": {
+        "en": "Imports the TeamZORA emoji set into the bot and replaces standard emojis in all bot messages with it.",
+        "de": "Importiert das TeamZORA-Emoji-Set in den Bot und ersetzt Standard-Emojis in allen Bot-Nachrichten."
+      }
+    },
+    {
       "name": "disableEveryoneProtection",
       "humanName": "Allow @everyone / @here pings",
       "default": false,

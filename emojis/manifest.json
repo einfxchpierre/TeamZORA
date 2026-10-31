@@ -1,0 +1,3499 @@
+{
+  "version": 1,
+  "colors": {
+    "pink": {
+      "label": "Pink",
+      "hex": "#e0287f"
+    },
+    "blue": {
+      "label": "Blau",
+      "hex": "#1d5fd6"
+    },
+    "white": {
+      "label": "Weiß",
+      "hex": "#cfd3dc"
+    },
+    "green": {
+      "label": "Grün",
+      "hex": "#13893f"
+    },
+    "red": {
+      "label": "Rot",
+      "hex": "#c81e1e"
+    },
+    "yellow": {
+      "label": "Gelb",
+      "hex": "#e09b05"
+    },
+    "purple": {
+      "label": "Lila",
+      "hex": "#7a22cf"
+    },
+    "orange": {
+      "label": "Orange",
+      "hex": "#e8550b"
+    },
+    "black": {
+      "label": "Schwarz",
+      "hex": "#0b0b0e"
+    }
+  },
+  "glyphs": {
+    "check": "Haken",
+    "cross": "Kreuz",
+    "warning": "Warnung",
+    "info": "Info",
+    "question": "Frage",
+    "star": "Stern",
+    "sparkle": "Funkeln",
+    "heart": "Herz",
+    "fire": "Feuer",
+    "hourglass": "Sanduhr",
+    "timer": "Stoppuhr",
+    "clock": "Uhr",
+    "bell": "Glocke",
+    "lock": "Schloss",
+    "unlock": "Offen",
+    "key": "Schlüssel",
+    "shield": "Schild",
+    "hammer": "Hammer",
+    "ban": "Verbot",
+    "trash": "Mülleimer",
+    "clipboard": "Klemmbrett",
+    "scroll": "Schriftrolle",
+    "page": "Seite",
+    "pencil": "Stift",
+    "clip": "Büroklammer",
+    "chart": "Statistik",
+    "moon": "Mond",
+    "user": "Person",
+    "users": "Personen",
+    "wave": "Winken",
+    "trophy": "Pokal",
+    "crown": "Krone",
+    "home": "Haus",
+    "stop": "Stopp",
+    "play": "Play",
+    "pause": "Pause",
+    "skip": "Weiter",
+    "back": "Zurück",
+    "next": "Vor",
+    "reply": "Antworten",
+    "refresh": "Neu laden",
+    "gear": "Zahnrad",
+    "wrench": "Schraubenschlüssel",
+    "package": "Paket",
+    "game": "Controller",
+    "dice": "Würfel",
+    "coffee": "Kaffee",
+    "arrow_up": "Pfeil hoch",
+    "arrow_down": "Pfeil runter",
+    "arrow_right": "Pfeil rechts",
+    "rock": "Stein",
+    "paper": "Papier",
+    "scissors": "Schere",
+    "mail": "Brief",
+    "inbox": "Eingang",
+    "party": "Party",
+    "boom": "Explosion",
+    "music": "Musik",
+    "coin": "Münze",
+    "ticket": "Ticket",
+    "sword": "Schwert",
+    "rocket": "Rakete",
+    "bolt": "Blitz",
+    "plus": "Plus",
+    "minus": "Minus",
+    "pin": "Pin",
+    "link": "Link",
+    "eye": "Auge",
+    "mute": "Stumm",
+    "gift": "Geschenk",
+    "chat": "Nachricht",
+    "num0": "0",
+    "num1": "1",
+    "num2": "2",
+    "num3": "3",
+    "num4": "4",
+    "num5": "5",
+    "num6": "6",
+    "num7": "7",
+    "num8": "8",
+    "num9": "9",
+    "num10": "10",
+    "dot": "Punkt",
+    "square": "Quadrat"
+  },
+  "emojis": [
+    {
+      "name": "z_check_pink",
+      "glyph": "check",
+      "color": "pink"
+    },
+    {
+      "name": "z_check_blue",
+      "glyph": "check",
+      "color": "blue"
+    },
+    {
+      "name": "z_check_white",
+      "glyph": "check",
+      "color": "white"
+    },
+    {
+      "name": "z_check_green",
+      "glyph": "check",
+      "color": "green"
+    },
+    {
+      "name": "z_check_red",
+      "glyph": "check",
+      "color": "red"
+    },
+    {
+      "name": "z_check_yellow",
+      "glyph": "check",
+      "color": "yellow"
+    },
+    {
+      "name": "z_check_purple",
+      "glyph": "check",
+      "color": "purple"
+    },
+    {
+      "name": "z_check_orange",
+      "glyph": "check",
+      "color": "orange"
+    },
+    {
+      "name": "z_cross_pink",
+      "glyph": "cross",
+      "color": "pink"
+    },
+    {
+      "name": "z_cross_blue",
+      "glyph": "cross",
+      "color": "blue"
+    },
+    {
+      "name": "z_cross_white",
+      "glyph": "cross",
+      "color": "white"
+    },
+    {
+      "name": "z_cross_green",
+      "glyph": "cross",
+      "color": "green"
+    },
+    {
+      "name": "z_cross_red",
+      "glyph": "cross",
+      "color": "red"
+    },
+    {
+      "name": "z_cross_yellow",
+      "glyph": "cross",
+      "color": "yellow"
+    },
+    {
+      "name": "z_cross_purple",
+      "glyph": "cross",
+      "color": "purple"
+    },
+    {
+      "name": "z_cross_orange",
+      "glyph": "cross",
+      "color": "orange"
+    },
+    {
+      "name": "z_warning_pink",
+      "glyph": "warning",
+      "color": "pink"
+    },
+    {
+      "name": "z_warning_blue",
+      "glyph": "warning",
+      "color": "blue"
+    },
+    {
+      "name": "z_warning_white",
+      "glyph": "warning",
+      "color": "white"
+    },
+    {
+      "name": "z_warning_green",
+      "glyph": "warning",
+      "color": "green"
+    },
+    {
+      "name": "z_warning_red",
+      "glyph": "warning",
+      "color": "red"
+    },
+    {
+      "name": "z_warning_yellow",
+      "glyph": "warning",
+      "color": "yellow"
+    },
+    {
+      "name": "z_warning_purple",
+      "glyph": "warning",
+      "color": "purple"
+    },
+    {
+      "name": "z_warning_orange",
+      "glyph": "warning",
+      "color": "orange"
+    },
+    {
+      "name": "z_info_pink",
+      "glyph": "info",
+      "color": "pink"
+    },
+    {
+      "name": "z_info_blue",
+      "glyph": "info",
+      "color": "blue"
+    },
+    {
+      "name": "z_info_white",
+      "glyph": "info",
+      "color": "white"
+    },
+    {
+      "name": "z_info_green",
+      "glyph": "info",
+      "color": "green"
+    },
+    {
+      "name": "z_info_red",
+      "glyph": "info",
+      "color": "red"
+    },
+    {
+      "name": "z_info_yellow",
+      "glyph": "info",
+      "color": "yellow"
+    },
+    {
+      "name": "z_info_purple",
+      "glyph": "info",
+      "color": "purple"
+    },
+    {
+      "name": "z_info_orange",
+      "glyph": "info",
+      "color": "orange"
+    },
+    {
+      "name": "z_question_pink",
+      "glyph": "question",
+      "color": "pink"
+    },
+    {
+      "name": "z_question_blue",
+      "glyph": "question",
+      "color": "blue"
+    },
+    {
+      "name": "z_question_white",
+      "glyph": "question",
+      "color": "white"
+    },
+    {
+      "name": "z_question_green",
+      "glyph": "question",
+      "color": "green"
+    },
+    {
+      "name": "z_question_red",
+      "glyph": "question",
+      "color": "red"
+    },
+    {
+      "name": "z_question_yellow",
+      "glyph": "question",
+      "color": "yellow"
+    },
+    {
+      "name": "z_question_purple",
+      "glyph": "question",
+      "color": "purple"
+    },
+    {
+      "name": "z_question_orange",
+      "glyph": "question",
+      "color": "orange"
+    },
+    {
+      "name": "z_star_pink",
+      "glyph": "star",
+      "color": "pink"
+    },
+    {
+      "name": "z_star_blue",
+      "glyph": "star",
+      "color": "blue"
+    },
+    {
+      "name": "z_star_white",
+      "glyph": "star",
+      "color": "white"
+    },
+    {
+      "name": "z_star_green",
+      "glyph": "star",
+      "color": "green"
+    },
+    {
+      "name": "z_star_red",
+      "glyph": "star",
+      "color": "red"
+    },
+    {
+      "name": "z_star_yellow",
+      "glyph": "star",
+      "color": "yellow"
+    },
+    {
+      "name": "z_star_purple",
+      "glyph": "star",
+      "color": "purple"
+    },
+    {
+      "name": "z_star_orange",
+      "glyph": "star",
+      "color": "orange"
+    },
+    {
+      "name": "z_sparkle_pink",
+      "glyph": "sparkle",
+      "color": "pink"
+    },
+    {
+      "name": "z_sparkle_blue",
+      "glyph": "sparkle",
+      "color": "blue"
+    },
+    {
+      "name": "z_sparkle_white",
+      "glyph": "sparkle",
+      "color": "white"
+    },
+    {
+      "name": "z_sparkle_green",
+      "glyph": "sparkle",
+      "color": "green"
+    },
+    {
+      "name": "z_sparkle_red",
+      "glyph": "sparkle",
+      "color": "red"
+    },
+    {
+      "name": "z_sparkle_yellow",
+      "glyph": "sparkle",
+      "color": "yellow"
+    },
+    {
+      "name": "z_sparkle_purple",
+      "glyph": "sparkle",
+      "color": "purple"
+    },
+    {
+      "name": "z_sparkle_orange",
+      "glyph": "sparkle",
+      "color": "orange"
+    },
+    {
+      "name": "z_heart_pink",
+      "glyph": "heart",
+      "color": "pink"
+    },
+    {
+      "name": "z_heart_blue",
+      "glyph": "heart",
+      "color": "blue"
+    },
+    {
+      "name": "z_heart_white",
+      "glyph": "heart",
+      "color": "white"
+    },
+    {
+      "name": "z_heart_green",
+      "glyph": "heart",
+      "color": "green"
+    },
+    {
+      "name": "z_heart_red",
+      "glyph": "heart",
+      "color": "red"
+    },
+    {
+      "name": "z_heart_yellow",
+      "glyph": "heart",
+      "color": "yellow"
+    },
+    {
+      "name": "z_heart_purple",
+      "glyph": "heart",
+      "color": "purple"
+    },
+    {
+      "name": "z_heart_orange",
+      "glyph": "heart",
+      "color": "orange"
+    },
+    {
+      "name": "z_fire_pink",
+      "glyph": "fire",
+      "color": "pink"
+    },
+    {
+      "name": "z_fire_blue",
+      "glyph": "fire",
+      "color": "blue"
+    },
+    {
+      "name": "z_fire_white",
+      "glyph": "fire",
+      "color": "white"
+    },
+    {
+      "name": "z_fire_green",
+      "glyph": "fire",
+      "color": "green"
+    },
+    {
+      "name": "z_fire_red",
+      "glyph": "fire",
+      "color": "red"
+    },
+    {
+      "name": "z_fire_yellow",
+      "glyph": "fire",
+      "color": "yellow"
+    },
+    {
+      "name": "z_fire_purple",
+      "glyph": "fire",
+      "color": "purple"
+    },
+    {
+      "name": "z_fire_orange",
+      "glyph": "fire",
+      "color": "orange"
+    },
+    {
+      "name": "z_hourglass_pink",
+      "glyph": "hourglass",
+      "color": "pink"
+    },
+    {
+      "name": "z_hourglass_blue",
+      "glyph": "hourglass",
+      "color": "blue"
+    },
+    {
+      "name": "z_hourglass_white",
+      "glyph": "hourglass",
+      "color": "white"
+    },
+    {
+      "name": "z_hourglass_green",
+      "glyph": "hourglass",
+      "color": "green"
+    },
+    {
+      "name": "z_hourglass_red",
+      "glyph": "hourglass",
+      "color": "red"
+    },
+    {
+      "name": "z_hourglass_yellow",
+      "glyph": "hourglass",
+      "color": "yellow"
+    },
+    {
+      "name": "z_hourglass_purple",
+      "glyph": "hourglass",
+      "color": "purple"
+    },
+    {
+      "name": "z_hourglass_orange",
+      "glyph": "hourglass",
+      "color": "orange"
+    },
+    {
+      "name": "z_timer_pink",
+      "glyph": "timer",
+      "color": "pink"
+    },
+    {
+      "name": "z_timer_blue",
+      "glyph": "timer",
+      "color": "blue"
+    },
+    {
+      "name": "z_timer_white",
+      "glyph": "timer",
+      "color": "white"
+    },
+    {
+      "name": "z_timer_green",
+      "glyph": "timer",
+      "color": "green"
+    },
+    {
+      "name": "z_timer_red",
+      "glyph": "timer",
+      "color": "red"
+    },
+    {
+      "name": "z_timer_yellow",
+      "glyph": "timer",
+      "color": "yellow"
+    },
+    {
+      "name": "z_timer_purple",
+      "glyph": "timer",
+      "color": "purple"
+    },
+    {
+      "name": "z_timer_orange",
+      "glyph": "timer",
+      "color": "orange"
+    },
+    {
+      "name": "z_clock_pink",
+      "glyph": "clock",
+      "color": "pink"
+    },
+    {
+      "name": "z_clock_blue",
+      "glyph": "clock",
+      "color": "blue"
+    },
+    {
+      "name": "z_clock_white",
+      "glyph": "clock",
+      "color": "white"
+    },
+    {
+      "name": "z_clock_green",
+      "glyph": "clock",
+      "color": "green"
+    },
+    {
+      "name": "z_clock_red",
+      "glyph": "clock",
+      "color": "red"
+    },
+    {
+      "name": "z_clock_yellow",
+      "glyph": "clock",
+      "color": "yellow"
+    },
+    {
+      "name": "z_clock_purple",
+      "glyph": "clock",
+      "color": "purple"
+    },
+    {
+      "name": "z_clock_orange",
+      "glyph": "clock",
+      "color": "orange"
+    },
+    {
+      "name": "z_bell_pink",
+      "glyph": "bell",
+      "color": "pink"
+    },
+    {
+      "name": "z_bell_blue",
+      "glyph": "bell",
+      "color": "blue"
+    },
+    {
+      "name": "z_bell_white",
+      "glyph": "bell",
+      "color": "white"
+    },
+    {
+      "name": "z_bell_green",
+      "glyph": "bell",
+      "color": "green"
+    },
+    {
+      "name": "z_bell_red",
+      "glyph": "bell",
+      "color": "red"
+    },
+    {
+      "name": "z_bell_yellow",
+      "glyph": "bell",
+      "color": "yellow"
+    },
+    {
+      "name": "z_bell_purple",
+      "glyph": "bell",
+      "color": "purple"
+    },
+    {
+      "name": "z_bell_orange",
+      "glyph": "bell",
+      "color": "orange"
+    },
+    {
+      "name": "z_lock_pink",
+      "glyph": "lock",
+      "color": "pink"
+    },
+    {
+      "name": "z_lock_blue",
+      "glyph": "lock",
+      "color": "blue"
+    },
+    {
+      "name": "z_lock_white",
+      "glyph": "lock",
+      "color": "white"
+    },
+    {
+      "name": "z_lock_green",
+      "glyph": "lock",
+      "color": "green"
+    },
+    {
+      "name": "z_lock_red",
+      "glyph": "lock",
+      "color": "red"
+    },
+    {
+      "name": "z_lock_yellow",
+      "glyph": "lock",
+      "color": "yellow"
+    },
+    {
+      "name": "z_lock_purple",
+      "glyph": "lock",
+      "color": "purple"
+    },
+    {
+      "name": "z_lock_orange",
+      "glyph": "lock",
+      "color": "orange"
+    },
+    {
+      "name": "z_unlock_pink",
+      "glyph": "unlock",
+      "color": "pink"
+    },
+    {
+      "name": "z_unlock_blue",
+      "glyph": "unlock",
+      "color": "blue"
+    },
+    {
+      "name": "z_unlock_white",
+      "glyph": "unlock",
+      "color": "white"
+    },
+    {
+      "name": "z_unlock_green",
+      "glyph": "unlock",
+      "color": "green"
+    },
+    {
+      "name": "z_unlock_red",
+      "glyph": "unlock",
+      "color": "red"
+    },
+    {
+      "name": "z_unlock_yellow",
+      "glyph": "unlock",
+      "color": "yellow"
+    },
+    {
+      "name": "z_unlock_purple",
+      "glyph": "unlock",
+      "color": "purple"
+    },
+    {
+      "name": "z_unlock_orange",
+      "glyph": "unlock",
+      "color": "orange"
+    },
+    {
+      "name": "z_key_pink",
+      "glyph": "key",
+      "color": "pink"
+    },
+    {
+      "name": "z_key_blue",
+      "glyph": "key",
+      "color": "blue"
+    },
+    {
+      "name": "z_key_white",
+      "glyph": "key",
+      "color": "white"
+    },
+    {
+      "name": "z_key_green",
+      "glyph": "key",
+      "color": "green"
+    },
+    {
+      "name": "z_key_red",
+      "glyph": "key",
+      "color": "red"
+    },
+    {
+      "name": "z_key_yellow",
+      "glyph": "key",
+      "color": "yellow"
+    },
+    {
+      "name": "z_key_purple",
+      "glyph": "key",
+      "color": "purple"
+    },
+    {
+      "name": "z_key_orange",
+      "glyph": "key",
+      "color": "orange"
+    },
+    {
+      "name": "z_shield_pink",
+      "glyph": "shield",
+      "color": "pink"
+    },
+    {
+      "name": "z_shield_blue",
+      "glyph": "shield",
+      "color": "blue"
+    },
+    {
+      "name": "z_shield_white",
+      "glyph": "shield",
+      "color": "white"
+    },
+    {
+      "name": "z_shield_green",
+      "glyph": "shield",
+      "color": "green"
+    },
+    {
+      "name": "z_shield_red",
+      "glyph": "shield",
+      "color": "red"
+    },
+    {
+      "name": "z_shield_yellow",
+      "glyph": "shield",
+      "color": "yellow"
+    },
+    {
+      "name": "z_shield_purple",
+      "glyph": "shield",
+      "color": "purple"
+    },
+    {
+      "name": "z_shield_orange",
+      "glyph": "shield",
+      "color": "orange"
+    },
+    {
+      "name": "z_hammer_pink",
+      "glyph": "hammer",
+      "color": "pink"
+    },
+    {
+      "name": "z_hammer_blue",
+      "glyph": "hammer",
+      "color": "blue"
+    },
+    {
+      "name": "z_hammer_white",
+      "glyph": "hammer",
+      "color": "white"
+    },
+    {
+      "name": "z_hammer_green",
+      "glyph": "hammer",
+      "color": "green"
+    },
+    {
+      "name": "z_hammer_red",
+      "glyph": "hammer",
+      "color": "red"
+    },
+    {
+      "name": "z_hammer_yellow",
+      "glyph": "hammer",
+      "color": "yellow"
+    },
+    {
+      "name": "z_hammer_purple",
+      "glyph": "hammer",
+      "color": "purple"
+    },
+    {
+      "name": "z_hammer_orange",
+      "glyph": "hammer",
+      "color": "orange"
+    },
+    {
+      "name": "z_ban_pink",
+      "glyph": "ban",
+      "color": "pink"
+    },
+    {
+      "name": "z_ban_blue",
+      "glyph": "ban",
+      "color": "blue"
+    },
+    {
+      "name": "z_ban_white",
+      "glyph": "ban",
+      "color": "white"
+    },
+    {
+      "name": "z_ban_green",
+      "glyph": "ban",
+      "color": "green"
+    },
+    {
+      "name": "z_ban_red",
+      "glyph": "ban",
+      "color": "red"
+    },
+    {
+      "name": "z_ban_yellow",
+      "glyph": "ban",
+      "color": "yellow"
+    },
+    {
+      "name": "z_ban_purple",
+      "glyph": "ban",
+      "color": "purple"
+    },
+    {
+      "name": "z_ban_orange",
+      "glyph": "ban",
+      "color": "orange"
+    },
+    {
+      "name": "z_trash_pink",
+      "glyph": "trash",
+      "color": "pink"
+    },
+    {
+      "name": "z_trash_blue",
+      "glyph": "trash",
+      "color": "blue"
+    },
+    {
+      "name": "z_trash_white",
+      "glyph": "trash",
+      "color": "white"
+    },
+    {
+      "name": "z_trash_green",
+      "glyph": "trash",
+      "color": "green"
+    },
+    {
+      "name": "z_trash_red",
+      "glyph": "trash",
+      "color": "red"
+    },
+    {
+      "name": "z_trash_yellow",
+      "glyph": "trash",
+      "color": "yellow"
+    },
+    {
+      "name": "z_trash_purple",
+      "glyph": "trash",
+      "color": "purple"
+    },
+    {
+      "name": "z_trash_orange",
+      "glyph": "trash",
+      "color": "orange"
+    },
+    {
+      "name": "z_clipboard_pink",
+      "glyph": "clipboard",
+      "color": "pink"
+    },
+    {
+      "name": "z_clipboard_blue",
+      "glyph": "clipboard",
+      "color": "blue"
+    },
+    {
+      "name": "z_clipboard_white",
+      "glyph": "clipboard",
+      "color": "white"
+    },
+    {
+      "name": "z_clipboard_green",
+      "glyph": "clipboard",
+      "color": "green"
+    },
+    {
+      "name": "z_clipboard_red",
+      "glyph": "clipboard",
+      "color": "red"
+    },
+    {
+      "name": "z_clipboard_yellow",
+      "glyph": "clipboard",
+      "color": "yellow"
+    },
+    {
+      "name": "z_clipboard_purple",
+      "glyph": "clipboard",
+      "color": "purple"
+    },
+    {
+      "name": "z_clipboard_orange",
+      "glyph": "clipboard",
+      "color": "orange"
+    },
+    {
+      "name": "z_scroll_pink",
+      "glyph": "scroll",
+      "color": "pink"
+    },
+    {
+      "name": "z_scroll_blue",
+      "glyph": "scroll",
+      "color": "blue"
+    },
+    {
+      "name": "z_scroll_white",
+      "glyph": "scroll",
+      "color": "white"
+    },
+    {
+      "name": "z_scroll_green",
+      "glyph": "scroll",
+      "color": "green"
+    },
+    {
+      "name": "z_scroll_red",
+      "glyph": "scroll",
+      "color": "red"
+    },
+    {
+      "name": "z_scroll_yellow",
+      "glyph": "scroll",
+      "color": "yellow"
+    },
+    {
+      "name": "z_scroll_purple",
+      "glyph": "scroll",
+      "color": "purple"
+    },
+    {
+      "name": "z_scroll_orange",
+      "glyph": "scroll",
+      "color": "orange"
+    },
+    {
+      "name": "z_page_pink",
+      "glyph": "page",
+      "color": "pink"
+    },
+    {
+      "name": "z_page_blue",
+      "glyph": "page",
+      "color": "blue"
+    },
+    {
+      "name": "z_page_white",
+      "glyph": "page",
+      "color": "white"
+    },
+    {
+      "name": "z_page_green",
+      "glyph": "page",
+      "color": "green"
+    },
+    {
+      "name": "z_page_red",
+      "glyph": "page",
+      "color": "red"
+    },
+    {
+      "name": "z_page_yellow",
+      "glyph": "page",
+      "color": "yellow"
+    },
+    {
+      "name": "z_page_purple",
+      "glyph": "page",
+      "color": "purple"
+    },
+    {
+      "name": "z_page_orange",
+      "glyph": "page",
+      "color": "orange"
+    },
+    {
+      "name": "z_pencil_pink",
+      "glyph": "pencil",
+      "color": "pink"
+    },
+    {
+      "name": "z_pencil_blue",
+      "glyph": "pencil",
+      "color": "blue"
+    },
+    {
+      "name": "z_pencil_white",
+      "glyph": "pencil",
+      "color": "white"
+    },
+    {
+      "name": "z_pencil_green",
+      "glyph": "pencil",
+      "color": "green"
+    },
+    {
+      "name": "z_pencil_red",
+      "glyph": "pencil",
+      "color": "red"
+    },
+    {
+      "name": "z_pencil_yellow",
+      "glyph": "pencil",
+      "color": "yellow"
+    },
+    {
+      "name": "z_pencil_purple",
+      "glyph": "pencil",
+      "color": "purple"
+    },
+    {
+      "name": "z_pencil_orange",
+      "glyph": "pencil",
+      "color": "orange"
+    },
+    {
+      "name": "z_clip_pink",
+      "glyph": "clip",
+      "color": "pink"
+    },
+    {
+      "name": "z_clip_blue",
+      "glyph": "clip",
+      "color": "blue"
+    },
+    {
+      "name": "z_clip_white",
+      "glyph": "clip",
+      "color": "white"
+    },
+    {
+      "name": "z_clip_green",
+      "glyph": "clip",
+      "color": "green"
+    },
+    {
+      "name": "z_clip_red",
+      "glyph": "clip",
+      "color": "red"
+    },
+    {
+      "name": "z_clip_yellow",
+      "glyph": "clip",
+      "color": "yellow"
+    },
+    {
+      "name": "z_clip_purple",
+      "glyph": "clip",
+      "color": "purple"
+    },
+    {
+      "name": "z_clip_orange",
+      "glyph": "clip",
+      "color": "orange"
+    },
+    {
+      "name": "z_chart_pink",
+      "glyph": "chart",
+      "color": "pink"
+    },
+    {
+      "name": "z_chart_blue",
+      "glyph": "chart",
+      "color": "blue"
+    },
+    {
+      "name": "z_chart_white",
+      "glyph": "chart",
+      "color": "white"
+    },
+    {
+      "name": "z_chart_green",
+      "glyph": "chart",
+      "color": "green"
+    },
+    {
+      "name": "z_chart_red",
+      "glyph": "chart",
+      "color": "red"
+    },
+    {
+      "name": "z_chart_yellow",
+      "glyph": "chart",
+      "color": "yellow"
+    },
+    {
+      "name": "z_chart_purple",
+      "glyph": "chart",
+      "color": "purple"
+    },
+    {
+      "name": "z_chart_orange",
+      "glyph": "chart",
+      "color": "orange"
+    },
+    {
+      "name": "z_moon_pink",
+      "glyph": "moon",
+      "color": "pink"
+    },
+    {
+      "name": "z_moon_blue",
+      "glyph": "moon",
+      "color": "blue"
+    },
+    {
+      "name": "z_moon_white",
+      "glyph": "moon",
+      "color": "white"
+    },
+    {
+      "name": "z_moon_green",
+      "glyph": "moon",
+      "color": "green"
+    },
+    {
+      "name": "z_moon_red",
+      "glyph": "moon",
+      "color": "red"
+    },
+    {
+      "name": "z_moon_yellow",
+      "glyph": "moon",
+      "color": "yellow"
+    },
+    {
+      "name": "z_moon_purple",
+      "glyph": "moon",
+      "color": "purple"
+    },
+    {
+      "name": "z_moon_orange",
+      "glyph": "moon",
+      "color": "orange"
+    },
+    {
+      "name": "z_user_pink",
+      "glyph": "user",
+      "color": "pink"
+    },
+    {
+      "name": "z_user_blue",
+      "glyph": "user",
+      "color": "blue"
+    },
+    {
+      "name": "z_user_white",
+      "glyph": "user",
+      "color": "white"
+    },
+    {
+      "name": "z_user_green",
+      "glyph": "user",
+      "color": "green"
+    },
+    {
+      "name": "z_user_red",
+      "glyph": "user",
+      "color": "red"
+    },
+    {
+      "name": "z_user_yellow",
+      "glyph": "user",
+      "color": "yellow"
+    },
+    {
+      "name": "z_user_purple",
+      "glyph": "user",
+      "color": "purple"
+    },
+    {
+      "name": "z_user_orange",
+      "glyph": "user",
+      "color": "orange"
+    },
+    {
+      "name": "z_users_pink",
+      "glyph": "users",
+      "color": "pink"
+    },
+    {
+      "name": "z_users_blue",
+      "glyph": "users",
+      "color": "blue"
+    },
+    {
+      "name": "z_users_white",
+      "glyph": "users",
+      "color": "white"
+    },
+    {
+      "name": "z_users_green",
+      "glyph": "users",
+      "color": "green"
+    },
+    {
+      "name": "z_users_red",
+      "glyph": "users",
+      "color": "red"
+    },
+    {
+      "name": "z_users_yellow",
+      "glyph": "users",
+      "color": "yellow"
+    },
+    {
+      "name": "z_users_purple",
+      "glyph": "users",
+      "color": "purple"
+    },
+    {
+      "name": "z_users_orange",
+      "glyph": "users",
+      "color": "orange"
+    },
+    {
+      "name": "z_wave_pink",
+      "glyph": "wave",
+      "color": "pink"
+    },
+    {
+      "name": "z_wave_blue",
+      "glyph": "wave",
+      "color": "blue"
+    },
+    {
+      "name": "z_wave_white",
+      "glyph": "wave",
+      "color": "white"
+    },
+    {
+      "name": "z_wave_green",
+      "glyph": "wave",
+      "color": "green"
+    },
+    {
+      "name": "z_wave_red",
+      "glyph": "wave",
+      "color": "red"
+    },
+    {
+      "name": "z_wave_yellow",
+      "glyph": "wave",
+      "color": "yellow"
+    },
+    {
+      "name": "z_wave_purple",
+      "glyph": "wave",
+      "color": "purple"
+    },
+    {
+      "name": "z_wave_orange",
+      "glyph": "wave",
+      "color": "orange"
+    },
+    {
+      "name": "z_trophy_pink",
+      "glyph": "trophy",
+      "color": "pink"
+    },
+    {
+      "name": "z_trophy_blue",
+      "glyph": "trophy",
+      "color": "blue"
+    },
+    {
+      "name": "z_trophy_white",
+      "glyph": "trophy",
+      "color": "white"
+    },
+    {
+      "name": "z_trophy_green",
+      "glyph": "trophy",
+      "color": "green"
+    },
+    {
+      "name": "z_trophy_red",
+      "glyph": "trophy",
+      "color": "red"
+    },
+    {
+      "name": "z_trophy_yellow",
+      "glyph": "trophy",
+      "color": "yellow"
+    },
+    {
+      "name": "z_trophy_purple",
+      "glyph": "trophy",
+      "color": "purple"
+    },
+    {
+      "name": "z_trophy_orange",
+      "glyph": "trophy",
+      "color": "orange"
+    },
+    {
+      "name": "z_crown_pink",
+      "glyph": "crown",
+      "color": "pink"
+    },
+    {
+      "name": "z_crown_blue",
+      "glyph": "crown",
+      "color": "blue"
+    },
+    {
+      "name": "z_crown_white",
+      "glyph": "crown",
+      "color": "white"
+    },
+    {
+      "name": "z_crown_green",
+      "glyph": "crown",
+      "color": "green"
+    },
+    {
+      "name": "z_crown_red",
+      "glyph": "crown",
+      "color": "red"
+    },
+    {
+      "name": "z_crown_yellow",
+      "glyph": "crown",
+      "color": "yellow"
+    },
+    {
+      "name": "z_crown_purple",
+      "glyph": "crown",
+      "color": "purple"
+    },
+    {
+      "name": "z_crown_orange",
+      "glyph": "crown",
+      "color": "orange"
+    },
+    {
+      "name": "z_home_pink",
+      "glyph": "home",
+      "color": "pink"
+    },
+    {
+      "name": "z_home_blue",
+      "glyph": "home",
+      "color": "blue"
+    },
+    {
+      "name": "z_home_white",
+      "glyph": "home",
+      "color": "white"
+    },
+    {
+      "name": "z_home_green",
+      "glyph": "home",
+      "color": "green"
+    },
+    {
+      "name": "z_home_red",
+      "glyph": "home",
+      "color": "red"
+    },
+    {
+      "name": "z_home_yellow",
+      "glyph": "home",
+      "color": "yellow"
+    },
+    {
+      "name": "z_home_purple",
+      "glyph": "home",
+      "color": "purple"
+    },
+    {
+      "name": "z_home_orange",
+      "glyph": "home",
+      "color": "orange"
+    },
+    {
+      "name": "z_stop_pink",
+      "glyph": "stop",
+      "color": "pink"
+    },
+    {
+      "name": "z_stop_blue",
+      "glyph": "stop",
+      "color": "blue"
+    },
+    {
+      "name": "z_stop_white",
+      "glyph": "stop",
+      "color": "white"
+    },
+    {
+      "name": "z_stop_green",
+      "glyph": "stop",
+      "color": "green"
+    },
+    {
+      "name": "z_stop_red",
+      "glyph": "stop",
+      "color": "red"
+    },
+    {
+      "name": "z_stop_yellow",
+      "glyph": "stop",
+      "color": "yellow"
+    },
+    {
+      "name": "z_stop_purple",
+      "glyph": "stop",
+      "color": "purple"
+    },
+    {
+      "name": "z_stop_orange",
+      "glyph": "stop",
+      "color": "orange"
+    },
+    {
+      "name": "z_play_pink",
+      "glyph": "play",
+      "color": "pink"
+    },
+    {
+      "name": "z_play_blue",
+      "glyph": "play",
+      "color": "blue"
+    },
+    {
+      "name": "z_play_white",
+      "glyph": "play",
+      "color": "white"
+    },
+    {
+      "name": "z_play_green",
+      "glyph": "play",
+      "color": "green"
+    },
+    {
+      "name": "z_play_red",
+      "glyph": "play",
+      "color": "red"
+    },
+    {
+      "name": "z_play_yellow",
+      "glyph": "play",
+      "color": "yellow"
+    },
+    {
+      "name": "z_play_purple",
+      "glyph": "play",
+      "color": "purple"
+    },
+    {
+      "name": "z_play_orange",
+      "glyph": "play",
+      "color": "orange"
+    },
+    {
+      "name": "z_pause_pink",
+      "glyph": "pause",
+      "color": "pink"
+    },
+    {
+      "name": "z_pause_blue",
+      "glyph": "pause",
+      "color": "blue"
+    },
+    {
+      "name": "z_pause_white",
+      "glyph": "pause",
+      "color": "white"
+    },
+    {
+      "name": "z_pause_green",
+      "glyph": "pause",
+      "color": "green"
+    },
+    {
+      "name": "z_pause_red",
+      "glyph": "pause",
+      "color": "red"
+    },
+    {
+      "name": "z_pause_yellow",
+      "glyph": "pause",
+      "color": "yellow"
+    },
+    {
+      "name": "z_pause_purple",
+      "glyph": "pause",
+      "color": "purple"
+    },
+    {
+      "name": "z_pause_orange",
+      "glyph": "pause",
+      "color": "orange"
+    },
+    {
+      "name": "z_skip_pink",
+      "glyph": "skip",
+      "color": "pink"
+    },
+    {
+      "name": "z_skip_blue",
+      "glyph": "skip",
+      "color": "blue"
+    },
+    {
+      "name": "z_skip_white",
+      "glyph": "skip",
+      "color": "white"
+    },
+    {
+      "name": "z_skip_green",
+      "glyph": "skip",
+      "color": "green"
+    },
+    {
+      "name": "z_skip_red",
+      "glyph": "skip",
+      "color": "red"
+    },
+    {
+      "name": "z_skip_yellow",
+      "glyph": "skip",
+      "color": "yellow"
+    },
+    {
+      "name": "z_skip_purple",
+      "glyph": "skip",
+      "color": "purple"
+    },
+    {
+      "name": "z_skip_orange",
+      "glyph": "skip",
+      "color": "orange"
+    },
+    {
+      "name": "z_back_pink",
+      "glyph": "back",
+      "color": "pink"
+    },
+    {
+      "name": "z_back_blue",
+      "glyph": "back",
+      "color": "blue"
+    },
+    {
+      "name": "z_back_white",
+      "glyph": "back",
+      "color": "white"
+    },
+    {
+      "name": "z_back_green",
+      "glyph": "back",
+      "color": "green"
+    },
+    {
+      "name": "z_back_red",
+      "glyph": "back",
+      "color": "red"
+    },
+    {
+      "name": "z_back_yellow",
+      "glyph": "back",
+      "color": "yellow"
+    },
+    {
+      "name": "z_back_purple",
+      "glyph": "back",
+      "color": "purple"
+    },
+    {
+      "name": "z_back_orange",
+      "glyph": "back",
+      "color": "orange"
+    },
+    {
+      "name": "z_next_pink",
+      "glyph": "next",
+      "color": "pink"
+    },
+    {
+      "name": "z_next_blue",
+      "glyph": "next",
+      "color": "blue"
+    },
+    {
+      "name": "z_next_white",
+      "glyph": "next",
+      "color": "white"
+    },
+    {
+      "name": "z_next_green",
+      "glyph": "next",
+      "color": "green"
+    },
+    {
+      "name": "z_next_red",
+      "glyph": "next",
+      "color": "red"
+    },
+    {
+      "name": "z_next_yellow",
+      "glyph": "next",
+      "color": "yellow"
+    },
+    {
+      "name": "z_next_purple",
+      "glyph": "next",
+      "color": "purple"
+    },
+    {
+      "name": "z_next_orange",
+      "glyph": "next",
+      "color": "orange"
+    },
+    {
+      "name": "z_reply_pink",
+      "glyph": "reply",
+      "color": "pink"
+    },
+    {
+      "name": "z_reply_blue",
+      "glyph": "reply",
+      "color": "blue"
+    },
+    {
+      "name": "z_reply_white",
+      "glyph": "reply",
+      "color": "white"
+    },
+    {
+      "name": "z_reply_green",
+      "glyph": "reply",
+      "color": "green"
+    },
+    {
+      "name": "z_reply_red",
+      "glyph": "reply",
+      "color": "red"
+    },
+    {
+      "name": "z_reply_yellow",
+      "glyph": "reply",
+      "color": "yellow"
+    },
+    {
+      "name": "z_reply_purple",
+      "glyph": "reply",
+      "color": "purple"
+    },
+    {
+      "name": "z_reply_orange",
+      "glyph": "reply",
+      "color": "orange"
+    },
+    {
+      "name": "z_refresh_pink",
+      "glyph": "refresh",
+      "color": "pink"
+    },
+    {
+      "name": "z_refresh_blue",
+      "glyph": "refresh",
+      "color": "blue"
+    },
+    {
+      "name": "z_refresh_white",
+      "glyph": "refresh",
+      "color": "white"
+    },
+    {
+      "name": "z_refresh_green",
+      "glyph": "refresh",
+      "color": "green"
+    },
+    {
+      "name": "z_refresh_red",
+      "glyph": "refresh",
+      "color": "red"
+    },
+    {
+      "name": "z_refresh_yellow",
+      "glyph": "refresh",
+      "color": "yellow"
+    },
+    {
+      "name": "z_refresh_purple",
+      "glyph": "refresh",
+      "color": "purple"
+    },
+    {
+      "name": "z_refresh_orange",
+      "glyph": "refresh",
+      "color": "orange"
+    },
+    {
+      "name": "z_gear_pink",
+      "glyph": "gear",
+      "color": "pink"
+    },
+    {
+      "name": "z_gear_blue",
+      "glyph": "gear",
+      "color": "blue"
+    },
+    {
+      "name": "z_gear_white",
+      "glyph": "gear",
+      "color": "white"
+    },
+    {
+      "name": "z_gear_green",
+      "glyph": "gear",
+      "color": "green"
+    },
+    {
+      "name": "z_gear_red",
+      "glyph": "gear",
+      "color": "red"
+    },
+    {
+      "name": "z_gear_yellow",
+      "glyph": "gear",
+      "color": "yellow"
+    },
+    {
+      "name": "z_gear_purple",
+      "glyph": "gear",
+      "color": "purple"
+    },
+    {
+      "name": "z_gear_orange",
+      "glyph": "gear",
+      "color": "orange"
+    },
+    {
+      "name": "z_wrench_pink",
+      "glyph": "wrench",
+      "color": "pink"
+    },
+    {
+      "name": "z_wrench_blue",
+      "glyph": "wrench",
+      "color": "blue"
+    },
+    {
+      "name": "z_wrench_white",
+      "glyph": "wrench",
+      "color": "white"
+    },
+    {
+      "name": "z_wrench_green",
+      "glyph": "wrench",
+      "color": "green"
+    },
+    {
+      "name": "z_wrench_red",
+      "glyph": "wrench",
+      "color": "red"
+    },
+    {
+      "name": "z_wrench_yellow",
+      "glyph": "wrench",
+      "color": "yellow"
+    },
+    {
+      "name": "z_wrench_purple",
+      "glyph": "wrench",
+      "color": "purple"
+    },
+    {
+      "name": "z_wrench_orange",
+      "glyph": "wrench",
+      "color": "orange"
+    },
+    {
+      "name": "z_package_pink",
+      "glyph": "package",
+      "color": "pink"
+    },
+    {
+      "name": "z_package_blue",
+      "glyph": "package",
+      "color": "blue"
+    },
+    {
+      "name": "z_package_white",
+      "glyph": "package",
+      "color": "white"
+    },
+    {
+      "name": "z_package_green",
+      "glyph": "package",
+      "color": "green"
+    },
+    {
+      "name": "z_package_red",
+      "glyph": "package",
+      "color": "red"
+    },
+    {
+      "name": "z_package_yellow",
+      "glyph": "package",
+      "color": "yellow"
+    },
+    {
+      "name": "z_package_purple",
+      "glyph": "package",
+      "color": "purple"
+    },
+    {
+      "name": "z_package_orange",
+      "glyph": "package",
+      "color": "orange"
+    },
+    {
+      "name": "z_game_pink",
+      "glyph": "game",
+      "color": "pink"
+    },
+    {
+      "name": "z_game_blue",
+      "glyph": "game",
+      "color": "blue"
+    },
+    {
+      "name": "z_game_white",
+      "glyph": "game",
+      "color": "white"
+    },
+    {
+      "name": "z_game_green",
+      "glyph": "game",
+      "color": "green"
+    },
+    {
+      "name": "z_game_red",
+      "glyph": "game",
+      "color": "red"
+    },
+    {
+      "name": "z_game_yellow",
+      "glyph": "game",
+      "color": "yellow"
+    },
+    {
+      "name": "z_game_purple",
+      "glyph": "game",
+      "color": "purple"
+    },
+    {
+      "name": "z_game_orange",
+      "glyph": "game",
+      "color": "orange"
+    },
+    {
+      "name": "z_dice_pink",
+      "glyph": "dice",
+      "color": "pink"
+    },
+    {
+      "name": "z_dice_blue",
+      "glyph": "dice",
+      "color": "blue"
+    },
+    {
+      "name": "z_dice_white",
+      "glyph": "dice",
+      "color": "white"
+    },
+    {
+      "name": "z_dice_green",
+      "glyph": "dice",
+      "color": "green"
+    },
+    {
+      "name": "z_dice_red",
+      "glyph": "dice",
+      "color": "red"
+    },
+    {
+      "name": "z_dice_yellow",
+      "glyph": "dice",
+      "color": "yellow"
+    },
+    {
+      "name": "z_dice_purple",
+      "glyph": "dice",
+      "color": "purple"
+    },
+    {
+      "name": "z_dice_orange",
+      "glyph": "dice",
+      "color": "orange"
+    },
+    {
+      "name": "z_coffee_pink",
+      "glyph": "coffee",
+      "color": "pink"
+    },
+    {
+      "name": "z_coffee_blue",
+      "glyph": "coffee",
+      "color": "blue"
+    },
+    {
+      "name": "z_coffee_white",
+      "glyph": "coffee",
+      "color": "white"
+    },
+    {
+      "name": "z_coffee_green",
+      "glyph": "coffee",
+      "color": "green"
+    },
+    {
+      "name": "z_coffee_red",
+      "glyph": "coffee",
+      "color": "red"
+    },
+    {
+      "name": "z_coffee_yellow",
+      "glyph": "coffee",
+      "color": "yellow"
+    },
+    {
+      "name": "z_coffee_purple",
+      "glyph": "coffee",
+      "color": "purple"
+    },
+    {
+      "name": "z_coffee_orange",
+      "glyph": "coffee",
+      "color": "orange"
+    },
+    {
+      "name": "z_arrow_up_pink",
+      "glyph": "arrow_up",
+      "color": "pink"
+    },
+    {
+      "name": "z_arrow_up_blue",
+      "glyph": "arrow_up",
+      "color": "blue"
+    },
+    {
+      "name": "z_arrow_up_white",
+      "glyph": "arrow_up",
+      "color": "white"
+    },
+    {
+      "name": "z_arrow_up_green",
+      "glyph": "arrow_up",
+      "color": "green"
+    },
+    {
+      "name": "z_arrow_up_red",
+      "glyph": "arrow_up",
+      "color": "red"
+    },
+    {
+      "name": "z_arrow_up_yellow",
+      "glyph": "arrow_up",
+      "color": "yellow"
+    },
+    {
+      "name": "z_arrow_up_purple",
+      "glyph": "arrow_up",
+      "color": "purple"
+    },
+    {
+      "name": "z_arrow_up_orange",
+      "glyph": "arrow_up",
+      "color": "orange"
+    },
+    {
+      "name": "z_arrow_down_pink",
+      "glyph": "arrow_down",
+      "color": "pink"
+    },
+    {
+      "name": "z_arrow_down_blue",
+      "glyph": "arrow_down",
+      "color": "blue"
+    },
+    {
+      "name": "z_arrow_down_white",
+      "glyph": "arrow_down",
+      "color": "white"
+    },
+    {
+      "name": "z_arrow_down_green",
+      "glyph": "arrow_down",
+      "color": "green"
+    },
+    {
+      "name": "z_arrow_down_red",
+      "glyph": "arrow_down",
+      "color": "red"
+    },
+    {
+      "name": "z_arrow_down_yellow",
+      "glyph": "arrow_down",
+      "color": "yellow"
+    },
+    {
+      "name": "z_arrow_down_purple",
+      "glyph": "arrow_down",
+      "color": "purple"
+    },
+    {
+      "name": "z_arrow_down_orange",
+      "glyph": "arrow_down",
+      "color": "orange"
+    },
+    {
+      "name": "z_arrow_right_pink",
+      "glyph": "arrow_right",
+      "color": "pink"
+    },
+    {
+      "name": "z_arrow_right_blue",
+      "glyph": "arrow_right",
+      "color": "blue"
+    },
+    {
+      "name": "z_arrow_right_white",
+      "glyph": "arrow_right",
+      "color": "white"
+    },
+    {
+      "name": "z_arrow_right_green",
+      "glyph": "arrow_right",
+      "color": "green"
+    },
+    {
+      "name": "z_arrow_right_red",
+      "glyph": "arrow_right",
+      "color": "red"
+    },
+    {
+      "name": "z_arrow_right_yellow",
+      "glyph": "arrow_right",
+      "color": "yellow"
+    },
+    {
+      "name": "z_arrow_right_purple",
+      "glyph": "arrow_right",
+      "color": "purple"
+    },
+    {
+      "name": "z_arrow_right_orange",
+      "glyph": "arrow_right",
+      "color": "orange"
+    },
+    {
+      "name": "z_rock_pink",
+      "glyph": "rock",
+      "color": "pink"
+    },
+    {
+      "name": "z_rock_blue",
+      "glyph": "rock",
+      "color": "blue"
+    },
+    {
+      "name": "z_rock_white",
+      "glyph": "rock",
+      "color": "white"
+    },
+    {
+      "name": "z_rock_green",
+      "glyph": "rock",
+      "color": "green"
+    },
+    {
+      "name": "z_rock_red",
+      "glyph": "rock",
+      "color": "red"
+    },
+    {
+      "name": "z_rock_yellow",
+      "glyph": "rock",
+      "color": "yellow"
+    },
+    {
+      "name": "z_rock_purple",
+      "glyph": "rock",
+      "color": "purple"
+    },
+    {
+      "name": "z_rock_orange",
+      "glyph": "rock",
+      "color": "orange"
+    },
+    {
+      "name": "z_paper_pink",
+      "glyph": "paper",
+      "color": "pink"
+    },
+    {
+      "name": "z_paper_blue",
+      "glyph": "paper",
+      "color": "blue"
+    },
+    {
+      "name": "z_paper_white",
+      "glyph": "paper",
+      "color": "white"
+    },
+    {
+      "name": "z_paper_green",
+      "glyph": "paper",
+      "color": "green"
+    },
+    {
+      "name": "z_paper_red",
+      "glyph": "paper",
+      "color": "red"
+    },
+    {
+      "name": "z_paper_yellow",
+      "glyph": "paper",
+      "color": "yellow"
+    },
+    {
+      "name": "z_paper_purple",
+      "glyph": "paper",
+      "color": "purple"
+    },
+    {
+      "name": "z_paper_orange",
+      "glyph": "paper",
+      "color": "orange"
+    },
+    {
+      "name": "z_scissors_pink",
+      "glyph": "scissors",
+      "color": "pink"
+    },
+    {
+      "name": "z_scissors_blue",
+      "glyph": "scissors",
+      "color": "blue"
+    },
+    {
+      "name": "z_scissors_white",
+      "glyph": "scissors",
+      "color": "white"
+    },
+    {
+      "name": "z_scissors_green",
+      "glyph": "scissors",
+      "color": "green"
+    },
+    {
+      "name": "z_scissors_red",
+      "glyph": "scissors",
+      "color": "red"
+    },
+    {
+      "name": "z_scissors_yellow",
+      "glyph": "scissors",
+      "color": "yellow"
+    },
+    {
+      "name": "z_scissors_purple",
+      "glyph": "scissors",
+      "color": "purple"
+    },
+    {
+      "name": "z_scissors_orange",
+      "glyph": "scissors",
+      "color": "orange"
+    },
+    {
+      "name": "z_mail_pink",
+      "glyph": "mail",
+      "color": "pink"
+    },
+    {
+      "name": "z_mail_blue",
+      "glyph": "mail",
+      "color": "blue"
+    },
+    {
+      "name": "z_mail_white",
+      "glyph": "mail",
+      "color": "white"
+    },
+    {
+      "name": "z_mail_green",
+      "glyph": "mail",
+      "color": "green"
+    },
+    {
+      "name": "z_mail_red",
+      "glyph": "mail",
+      "color": "red"
+    },
+    {
+      "name": "z_mail_yellow",
+      "glyph": "mail",
+      "color": "yellow"
+    },
+    {
+      "name": "z_mail_purple",
+      "glyph": "mail",
+      "color": "purple"
+    },
+    {
+      "name": "z_mail_orange",
+      "glyph": "mail",
+      "color": "orange"
+    },
+    {
+      "name": "z_inbox_pink",
+      "glyph": "inbox",
+      "color": "pink"
+    },
+    {
+      "name": "z_inbox_blue",
+      "glyph": "inbox",
+      "color": "blue"
+    },
+    {
+      "name": "z_inbox_white",
+      "glyph": "inbox",
+      "color": "white"
+    },
+    {
+      "name": "z_inbox_green",
+      "glyph": "inbox",
+      "color": "green"
+    },
+    {
+      "name": "z_inbox_red",
+      "glyph": "inbox",
+      "color": "red"
+    },
+    {
+      "name": "z_inbox_yellow",
+      "glyph": "inbox",
+      "color": "yellow"
+    },
+    {
+      "name": "z_inbox_purple",
+      "glyph": "inbox",
+      "color": "purple"
+    },
+    {
+      "name": "z_inbox_orange",
+      "glyph": "inbox",
+      "color": "orange"
+    },
+    {
+      "name": "z_party_pink",
+      "glyph": "party",
+      "color": "pink"
+    },
+    {
+      "name": "z_party_blue",
+      "glyph": "party",
+      "color": "blue"
+    },
+    {
+      "name": "z_party_white",
+      "glyph": "party",
+      "color": "white"
+    },
+    {
+      "name": "z_party_green",
+      "glyph": "party",
+      "color": "green"
+    },
+    {
+      "name": "z_party_red",
+      "glyph": "party",
+      "color": "red"
+    },
+    {
+      "name": "z_party_yellow",
+      "glyph": "party",
+      "color": "yellow"
+    },
+    {
+      "name": "z_party_purple",
+      "glyph": "party",
+      "color": "purple"
+    },
+    {
+      "name": "z_party_orange",
+      "glyph": "party",
+      "color": "orange"
+    },
+    {
+      "name": "z_boom_pink",
+      "glyph": "boom",
+      "color": "pink"
+    },
+    {
+      "name": "z_boom_blue",
+      "glyph": "boom",
+      "color": "blue"
+    },
+    {
+      "name": "z_boom_white",
+      "glyph": "boom",
+      "color": "white"
+    },
+    {
+      "name": "z_boom_green",
+      "glyph": "boom",
+      "color": "green"
+    },
+    {
+      "name": "z_boom_red",
+      "glyph": "boom",
+      "color": "red"
+    },
+    {
+      "name": "z_boom_yellow",
+      "glyph": "boom",
+      "color": "yellow"
+    },
+    {
+      "name": "z_boom_purple",
+      "glyph": "boom",
+      "color": "purple"
+    },
+    {
+      "name": "z_boom_orange",
+      "glyph": "boom",
+      "color": "orange"
+    },
+    {
+      "name": "z_music_pink",
+      "glyph": "music",
+      "color": "pink"
+    },
+    {
+      "name": "z_music_blue",
+      "glyph": "music",
+      "color": "blue"
+    },
+    {
+      "name": "z_music_white",
+      "glyph": "music",
+      "color": "white"
+    },
+    {
+      "name": "z_music_green",
+      "glyph": "music",
+      "color": "green"
+    },
+    {
+      "name": "z_music_red",
+      "glyph": "music",
+      "color": "red"
+    },
+    {
+      "name": "z_music_yellow",
+      "glyph": "music",
+      "color": "yellow"
+    },
+    {
+      "name": "z_music_purple",
+      "glyph": "music",
+      "color": "purple"
+    },
+    {
+      "name": "z_music_orange",
+      "glyph": "music",
+      "color": "orange"
+    },
+    {
+      "name": "z_coin_pink",
+      "glyph": "coin",
+      "color": "pink"
+    },
+    {
+      "name": "z_coin_blue",
+      "glyph": "coin",
+      "color": "blue"
+    },
+    {
+      "name": "z_coin_white",
+      "glyph": "coin",
+      "color": "white"
+    },
+    {
+      "name": "z_coin_green",
+      "glyph": "coin",
+      "color": "green"
+    },
+    {
+      "name": "z_coin_red",
+      "glyph": "coin",
+      "color": "red"
+    },
+    {
+      "name": "z_coin_yellow",
+      "glyph": "coin",
+      "color": "yellow"
+    },
+    {
+      "name": "z_coin_purple",
+      "glyph": "coin",
+      "color": "purple"
+    },
+    {
+      "name": "z_coin_orange",
+      "glyph": "coin",
+      "color": "orange"
+    },
+    {
+      "name": "z_ticket_pink",
+      "glyph": "ticket",
+      "color": "pink"
+    },
+    {
+      "name": "z_ticket_blue",
+      "glyph": "ticket",
+      "color": "blue"
+    },
+    {
+      "name": "z_ticket_white",
+      "glyph": "ticket",
+      "color": "white"
+    },
+    {
+      "name": "z_ticket_green",
+      "glyph": "ticket",
+      "color": "green"
+    },
+    {
+      "name": "z_ticket_red",
+      "glyph": "ticket",
+      "color": "red"
+    },
+    {
+      "name": "z_ticket_yellow",
+      "glyph": "ticket",
+      "color": "yellow"
+    },
+    {
+      "name": "z_ticket_purple",
+      "glyph": "ticket",
+      "color": "purple"
+    },
+    {
+      "name": "z_ticket_orange",
+      "glyph": "ticket",
+      "color": "orange"
+    },
+    {
+      "name": "z_sword_pink",
+      "glyph": "sword",
+      "color": "pink"
+    },
+    {
+      "name": "z_sword_blue",
+      "glyph": "sword",
+      "color": "blue"
+    },
+    {
+      "name": "z_sword_white",
+      "glyph": "sword",
+      "color": "white"
+    },
+    {
+      "name": "z_sword_green",
+      "glyph": "sword",
+      "color": "green"
+    },
+    {
+      "name": "z_sword_red",
+      "glyph": "sword",
+      "color": "red"
+    },
+    {
+      "name": "z_sword_yellow",
+      "glyph": "sword",
+      "color": "yellow"
+    },
+    {
+      "name": "z_sword_purple",
+      "glyph": "sword",
+      "color": "purple"
+    },
+    {
+      "name": "z_sword_orange",
+      "glyph": "sword",
+      "color": "orange"
+    },
+    {
+      "name": "z_rocket_pink",
+      "glyph": "rocket",
+      "color": "pink"
+    },
+    {
+      "name": "z_rocket_blue",
+      "glyph": "rocket",
+      "color": "blue"
+    },
+    {
+      "name": "z_rocket_white",
+      "glyph": "rocket",
+      "color": "white"
+    },
+    {
+      "name": "z_rocket_green",
+      "glyph": "rocket",
+      "color": "green"
+    },
+    {
+      "name": "z_rocket_red",
+      "glyph": "rocket",
+      "color": "red"
+    },
+    {
+      "name": "z_rocket_yellow",
+      "glyph": "rocket",
+      "color": "yellow"
+    },
+    {
+      "name": "z_rocket_purple",
+      "glyph": "rocket",
+      "color": "purple"
+    },
+    {
+      "name": "z_rocket_orange",
+      "glyph": "rocket",
+      "color": "orange"
+    },
+    {
+      "name": "z_bolt_pink",
+      "glyph": "bolt",
+      "color": "pink"
+    },
+    {
+      "name": "z_bolt_blue",
+      "glyph": "bolt",
+      "color": "blue"
+    },
+    {
+      "name": "z_bolt_white",
+      "glyph": "bolt",
+      "color": "white"
+    },
+    {
+      "name": "z_bolt_green",
+      "glyph": "bolt",
+      "color": "green"
+    },
+    {
+      "name": "z_bolt_red",
+      "glyph": "bolt",
+      "color": "red"
+    },
+    {
+      "name": "z_bolt_yellow",
+      "glyph": "bolt",
+      "color": "yellow"
+    },
+    {
+      "name": "z_bolt_purple",
+      "glyph": "bolt",
+      "color": "purple"
+    },
+    {
+      "name": "z_bolt_orange",
+      "glyph": "bolt",
+      "color": "orange"
+    },
+    {
+      "name": "z_plus_pink",
+      "glyph": "plus",
+      "color": "pink"
+    },
+    {
+      "name": "z_plus_blue",
+      "glyph": "plus",
+      "color": "blue"
+    },
+    {
+      "name": "z_plus_white",
+      "glyph": "plus",
+      "color": "white"
+    },
+    {
+      "name": "z_plus_green",
+      "glyph": "plus",
+      "color": "green"
+    },
+    {
+      "name": "z_plus_red",
+      "glyph": "plus",
+      "color": "red"
+    },
+    {
+      "name": "z_plus_yellow",
+      "glyph": "plus",
+      "color": "yellow"
+    },
+    {
+      "name": "z_plus_purple",
+      "glyph": "plus",
+      "color": "purple"
+    },
+    {
+      "name": "z_plus_orange",
+      "glyph": "plus",
+      "color": "orange"
+    },
+    {
+      "name": "z_minus_pink",
+      "glyph": "minus",
+      "color": "pink"
+    },
+    {
+      "name": "z_minus_blue",
+      "glyph": "minus",
+      "color": "blue"
+    },
+    {
+      "name": "z_minus_white",
+      "glyph": "minus",
+      "color": "white"
+    },
+    {
+      "name": "z_minus_green",
+      "glyph": "minus",
+      "color": "green"
+    },
+    {
+      "name": "z_minus_red",
+      "glyph": "minus",
+      "color": "red"
+    },
+    {
+      "name": "z_minus_yellow",
+      "glyph": "minus",
+      "color": "yellow"
+    },
+    {
+      "name": "z_minus_purple",
+      "glyph": "minus",
+      "color": "purple"
+    },
+    {
+      "name": "z_minus_orange",
+      "glyph": "minus",
+      "color": "orange"
+    },
+    {
+      "name": "z_pin_pink",
+      "glyph": "pin",
+      "color": "pink"
+    },
+    {
+      "name": "z_pin_blue",
+      "glyph": "pin",
+      "color": "blue"
+    },
+    {
+      "name": "z_pin_white",
+      "glyph": "pin",
+      "color": "white"
+    },
+    {
+      "name": "z_pin_green",
+      "glyph": "pin",
+      "color": "green"
+    },
+    {
+      "name": "z_pin_red",
+      "glyph": "pin",
+      "color": "red"
+    },
+    {
+      "name": "z_pin_yellow",
+      "glyph": "pin",
+      "color": "yellow"
+    },
+    {
+      "name": "z_pin_purple",
+      "glyph": "pin",
+      "color": "purple"
+    },
+    {
+      "name": "z_pin_orange",
+      "glyph": "pin",
+      "color": "orange"
+    },
+    {
+      "name": "z_link_pink",
+      "glyph": "link",
+      "color": "pink"
+    },
+    {
+      "name": "z_link_blue",
+      "glyph": "link",
+      "color": "blue"
+    },
+    {
+      "name": "z_link_white",
+      "glyph": "link",
+      "color": "white"
+    },
+    {
+      "name": "z_link_green",
+      "glyph": "link",
+      "color": "green"
+    },
+    {
+      "name": "z_link_red",
+      "glyph": "link",
+      "color": "red"
+    },
+    {
+      "name": "z_link_yellow",
+      "glyph": "link",
+      "color": "yellow"
+    },
+    {
+      "name": "z_link_purple",
+      "glyph": "link",
+      "color": "purple"
+    },
+    {
+      "name": "z_link_orange",
+      "glyph": "link",
+      "color": "orange"
+    },
+    {
+      "name": "z_eye_pink",
+      "glyph": "eye",
+      "color": "pink"
+    },
+    {
+      "name": "z_eye_blue",
+      "glyph": "eye",
+      "color": "blue"
+    },
+    {
+      "name": "z_eye_white",
+      "glyph": "eye",
+      "color": "white"
+    },
+    {
+      "name": "z_eye_green",
+      "glyph": "eye",
+      "color": "green"
+    },
+    {
+      "name": "z_eye_red",
+      "glyph": "eye",
+      "color": "red"
+    },
+    {
+      "name": "z_eye_yellow",
+      "glyph": "eye",
+      "color": "yellow"
+    },
+    {
+      "name": "z_eye_purple",
+      "glyph": "eye",
+      "color": "purple"
+    },
+    {
+      "name": "z_eye_orange",
+      "glyph": "eye",
+      "color": "orange"
+    },
+    {
+      "name": "z_mute_pink",
+      "glyph": "mute",
+      "color": "pink"
+    },
+    {
+      "name": "z_mute_blue",
+      "glyph": "mute",
+      "color": "blue"
+    },
+    {
+      "name": "z_mute_white",
+      "glyph": "mute",
+      "color": "white"
+    },
+    {
+      "name": "z_mute_green",
+      "glyph": "mute",
+      "color": "green"
+    },
+    {
+      "name": "z_mute_red",
+      "glyph": "mute",
+      "color": "red"
+    },
+    {
+      "name": "z_mute_yellow",
+      "glyph": "mute",
+      "color": "yellow"
+    },
+    {
+      "name": "z_mute_purple",
+      "glyph": "mute",
+      "color": "purple"
+    },
+    {
+      "name": "z_mute_orange",
+      "glyph": "mute",
+      "color": "orange"
+    },
+    {
+      "name": "z_gift_pink",
+      "glyph": "gift",
+      "color": "pink"
+    },
+    {
+      "name": "z_gift_blue",
+      "glyph": "gift",
+      "color": "blue"
+    },
+    {
+      "name": "z_gift_white",
+      "glyph": "gift",
+      "color": "white"
+    },
+    {
+      "name": "z_gift_green",
+      "glyph": "gift",
+      "color": "green"
+    },
+    {
+      "name": "z_gift_red",
+      "glyph": "gift",
+      "color": "red"
+    },
+    {
+      "name": "z_gift_yellow",
+      "glyph": "gift",
+      "color": "yellow"
+    },
+    {
+      "name": "z_gift_purple",
+      "glyph": "gift",
+      "color": "purple"
+    },
+    {
+      "name": "z_gift_orange",
+      "glyph": "gift",
+      "color": "orange"
+    },
+    {
+      "name": "z_chat_pink",
+      "glyph": "chat",
+      "color": "pink"
+    },
+    {
+      "name": "z_chat_blue",
+      "glyph": "chat",
+      "color": "blue"
+    },
+    {
+      "name": "z_chat_white",
+      "glyph": "chat",
+      "color": "white"
+    },
+    {
+      "name": "z_chat_green",
+      "glyph": "chat",
+      "color": "green"
+    },
+    {
+      "name": "z_chat_red",
+      "glyph": "chat",
+      "color": "red"
+    },
+    {
+      "name": "z_chat_yellow",
+      "glyph": "chat",
+      "color": "yellow"
+    },
+    {
+      "name": "z_chat_purple",
+      "glyph": "chat",
+      "color": "purple"
+    },
+    {
+      "name": "z_chat_orange",
+      "glyph": "chat",
+      "color": "orange"
+    },
+    {
+      "name": "z_num0_pink",
+      "glyph": "num0",
+      "color": "pink"
+    },
+    {
+      "name": "z_num0_blue",
+      "glyph": "num0",
+      "color": "blue"
+    },
+    {
+      "name": "z_num0_white",
+      "glyph": "num0",
+      "color": "white"
+    },
+    {
+      "name": "z_num0_green",
+      "glyph": "num0",
+      "color": "green"
+    },
+    {
+      "name": "z_num0_red",
+      "glyph": "num0",
+      "color": "red"
+    },
+    {
+      "name": "z_num0_yellow",
+      "glyph": "num0",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num0_purple",
+      "glyph": "num0",
+      "color": "purple"
+    },
+    {
+      "name": "z_num0_orange",
+      "glyph": "num0",
+      "color": "orange"
+    },
+    {
+      "name": "z_num1_pink",
+      "glyph": "num1",
+      "color": "pink"
+    },
+    {
+      "name": "z_num1_blue",
+      "glyph": "num1",
+      "color": "blue"
+    },
+    {
+      "name": "z_num1_white",
+      "glyph": "num1",
+      "color": "white"
+    },
+    {
+      "name": "z_num1_green",
+      "glyph": "num1",
+      "color": "green"
+    },
+    {
+      "name": "z_num1_red",
+      "glyph": "num1",
+      "color": "red"
+    },
+    {
+      "name": "z_num1_yellow",
+      "glyph": "num1",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num1_purple",
+      "glyph": "num1",
+      "color": "purple"
+    },
+    {
+      "name": "z_num1_orange",
+      "glyph": "num1",
+      "color": "orange"
+    },
+    {
+      "name": "z_num2_pink",
+      "glyph": "num2",
+      "color": "pink"
+    },
+    {
+      "name": "z_num2_blue",
+      "glyph": "num2",
+      "color": "blue"
+    },
+    {
+      "name": "z_num2_white",
+      "glyph": "num2",
+      "color": "white"
+    },
+    {
+      "name": "z_num2_green",
+      "glyph": "num2",
+      "color": "green"
+    },
+    {
+      "name": "z_num2_red",
+      "glyph": "num2",
+      "color": "red"
+    },
+    {
+      "name": "z_num2_yellow",
+      "glyph": "num2",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num2_purple",
+      "glyph": "num2",
+      "color": "purple"
+    },
+    {
+      "name": "z_num2_orange",
+      "glyph": "num2",
+      "color": "orange"
+    },
+    {
+      "name": "z_num3_pink",
+      "glyph": "num3",
+      "color": "pink"
+    },
+    {
+      "name": "z_num3_blue",
+      "glyph": "num3",
+      "color": "blue"
+    },
+    {
+      "name": "z_num3_white",
+      "glyph": "num3",
+      "color": "white"
+    },
+    {
+      "name": "z_num3_green",
+      "glyph": "num3",
+      "color": "green"
+    },
+    {
+      "name": "z_num3_red",
+      "glyph": "num3",
+      "color": "red"
+    },
+    {
+      "name": "z_num3_yellow",
+      "glyph": "num3",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num3_purple",
+      "glyph": "num3",
+      "color": "purple"
+    },
+    {
+      "name": "z_num3_orange",
+      "glyph": "num3",
+      "color": "orange"
+    },
+    {
+      "name": "z_num4_pink",
+      "glyph": "num4",
+      "color": "pink"
+    },
+    {
+      "name": "z_num4_blue",
+      "glyph": "num4",
+      "color": "blue"
+    },
+    {
+      "name": "z_num4_white",
+      "glyph": "num4",
+      "color": "white"
+    },
+    {
+      "name": "z_num4_green",
+      "glyph": "num4",
+      "color": "green"
+    },
+    {
+      "name": "z_num4_red",
+      "glyph": "num4",
+      "color": "red"
+    },
+    {
+      "name": "z_num4_yellow",
+      "glyph": "num4",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num4_purple",
+      "glyph": "num4",
+      "color": "purple"
+    },
+    {
+      "name": "z_num4_orange",
+      "glyph": "num4",
+      "color": "orange"
+    },
+    {
+      "name": "z_num5_pink",
+      "glyph": "num5",
+      "color": "pink"
+    },
+    {
+      "name": "z_num5_blue",
+      "glyph": "num5",
+      "color": "blue"
+    },
+    {
+      "name": "z_num5_white",
+      "glyph": "num5",
+      "color": "white"
+    },
+    {
+      "name": "z_num5_green",
+      "glyph": "num5",
+      "color": "green"
+    },
+    {
+      "name": "z_num5_red",
+      "glyph": "num5",
+      "color": "red"
+    },
+    {
+      "name": "z_num5_yellow",
+      "glyph": "num5",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num5_purple",
+      "glyph": "num5",
+      "color": "purple"
+    },
+    {
+      "name": "z_num5_orange",
+      "glyph": "num5",
+      "color": "orange"
+    },
+    {
+      "name": "z_num6_pink",
+      "glyph": "num6",
+      "color": "pink"
+    },
+    {
+      "name": "z_num6_blue",
+      "glyph": "num6",
+      "color": "blue"
+    },
+    {
+      "name": "z_num6_white",
+      "glyph": "num6",
+      "color": "white"
+    },
+    {
+      "name": "z_num6_green",
+      "glyph": "num6",
+      "color": "green"
+    },
+    {
+      "name": "z_num6_red",
+      "glyph": "num6",
+      "color": "red"
+    },
+    {
+      "name": "z_num6_yellow",
+      "glyph": "num6",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num6_purple",
+      "glyph": "num6",
+      "color": "purple"
+    },
+    {
+      "name": "z_num6_orange",
+      "glyph": "num6",
+      "color": "orange"
+    },
+    {
+      "name": "z_num7_pink",
+      "glyph": "num7",
+      "color": "pink"
+    },
+    {
+      "name": "z_num7_blue",
+      "glyph": "num7",
+      "color": "blue"
+    },
+    {
+      "name": "z_num7_white",
+      "glyph": "num7",
+      "color": "white"
+    },
+    {
+      "name": "z_num7_green",
+      "glyph": "num7",
+      "color": "green"
+    },
+    {
+      "name": "z_num7_red",
+      "glyph": "num7",
+      "color": "red"
+    },
+    {
+      "name": "z_num7_yellow",
+      "glyph": "num7",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num7_purple",
+      "glyph": "num7",
+      "color": "purple"
+    },
+    {
+      "name": "z_num7_orange",
+      "glyph": "num7",
+      "color": "orange"
+    },
+    {
+      "name": "z_num8_pink",
+      "glyph": "num8",
+      "color": "pink"
+    },
+    {
+      "name": "z_num8_blue",
+      "glyph": "num8",
+      "color": "blue"
+    },
+    {
+      "name": "z_num8_white",
+      "glyph": "num8",
+      "color": "white"
+    },
+    {
+      "name": "z_num8_green",
+      "glyph": "num8",
+      "color": "green"
+    },
+    {
+      "name": "z_num8_red",
+      "glyph": "num8",
+      "color": "red"
+    },
+    {
+      "name": "z_num8_yellow",
+      "glyph": "num8",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num8_purple",
+      "glyph": "num8",
+      "color": "purple"
+    },
+    {
+      "name": "z_num8_orange",
+      "glyph": "num8",
+      "color": "orange"
+    },
+    {
+      "name": "z_num9_pink",
+      "glyph": "num9",
+      "color": "pink"
+    },
+    {
+      "name": "z_num9_blue",
+      "glyph": "num9",
+      "color": "blue"
+    },
+    {
+      "name": "z_num9_white",
+      "glyph": "num9",
+      "color": "white"
+    },
+    {
+      "name": "z_num9_green",
+      "glyph": "num9",
+      "color": "green"
+    },
+    {
+      "name": "z_num9_red",
+      "glyph": "num9",
+      "color": "red"
+    },
+    {
+      "name": "z_num9_yellow",
+      "glyph": "num9",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num9_purple",
+      "glyph": "num9",
+      "color": "purple"
+    },
+    {
+      "name": "z_num9_orange",
+      "glyph": "num9",
+      "color": "orange"
+    },
+    {
+      "name": "z_num10_pink",
+      "glyph": "num10",
+      "color": "pink"
+    },
+    {
+      "name": "z_num10_blue",
+      "glyph": "num10",
+      "color": "blue"
+    },
+    {
+      "name": "z_num10_white",
+      "glyph": "num10",
+      "color": "white"
+    },
+    {
+      "name": "z_num10_green",
+      "glyph": "num10",
+      "color": "green"
+    },
+    {
+      "name": "z_num10_red",
+      "glyph": "num10",
+      "color": "red"
+    },
+    {
+      "name": "z_num10_yellow",
+      "glyph": "num10",
+      "color": "yellow"
+    },
+    {
+      "name": "z_num10_purple",
+      "glyph": "num10",
+      "color": "purple"
+    },
+    {
+      "name": "z_num10_orange",
+      "glyph": "num10",
+      "color": "orange"
+    },
+    {
+      "name": "z_dot_pink",
+      "glyph": "dot",
+      "color": "pink"
+    },
+    {
+      "name": "z_dot_blue",
+      "glyph": "dot",
+      "color": "blue"
+    },
+    {
+      "name": "z_dot_white",
+      "glyph": "dot",
+      "color": "white"
+    },
+    {
+      "name": "z_dot_green",
+      "glyph": "dot",
+      "color": "green"
+    },
+    {
+      "name": "z_dot_red",
+      "glyph": "dot",
+      "color": "red"
+    },
+    {
+      "name": "z_dot_yellow",
+      "glyph": "dot",
+      "color": "yellow"
+    },
+    {
+      "name": "z_dot_purple",
+      "glyph": "dot",
+      "color": "purple"
+    },
+    {
+      "name": "z_dot_orange",
+      "glyph": "dot",
+      "color": "orange"
+    },
+    {
+      "name": "z_dot_black",
+      "glyph": "dot",
+      "color": "black"
+    },
+    {
+      "name": "z_square_pink",
+      "glyph": "square",
+      "color": "pink"
+    },
+    {
+      "name": "z_square_blue",
+      "glyph": "square",
+      "color": "blue"
+    },
+    {
+      "name": "z_square_white",
+      "glyph": "square",
+      "color": "white"
+    },
+    {
+      "name": "z_square_green",
+      "glyph": "square",
+      "color": "green"
+    },
+    {
+      "name": "z_square_red",
+      "glyph": "square",
+      "color": "red"
+    },
+    {
+      "name": "z_square_yellow",
+      "glyph": "square",
+      "color": "yellow"
+    },
+    {
+      "name": "z_square_purple",
+      "glyph": "square",
+      "color": "purple"
+    },
+    {
+      "name": "z_square_orange",
+      "glyph": "square",
+      "color": "orange"
+    },
+    {
+      "name": "z_square_black",
+      "glyph": "square",
+      "color": "black"
+    }
+  ]
+}

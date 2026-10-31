@@ -1,4 +1,5 @@
 const Discord = require('./src/discordjs-fix');
+require('./src/functions/customEmojis').install(Discord);
 const {
     ApplicationCommandOptionType,
     ChannelType,
@@ -343,6 +344,7 @@ async function startUp() {
         await client.guild.members.fetch({withPresences: client._activeIntents.includes('GuildPresences')}).catch(() => {
         });
     }
+    require('./src/functions/customEmojis').init(client);
     client.emit('botReady');
     if (scnxSetup) await require('./src/functions/scnx-integration').init(client);
     logger.info(localize('main', 'bot-ready'));

@@ -13,7 +13,7 @@
     {
       "name": "footer",
       "humanName": "Embed-Footer",
-      "default": "Powered by scnx.xyz ⚡",
+      "default": "Powered by TeamZORA",
       "description": "Footer of every embed",
       "type": "string",
       "pro": true
@@ -21,7 +21,7 @@
     {
       "name": "footerImgUrl",
       "humanName": "Embed-Footer-Image-URL",
-      "default": "https://scnx.xyz/favicon.png",
+      "default": "",
       "allowNull": true,
       "description": "Footer-Image of every embed",
       "type": "imgURL",

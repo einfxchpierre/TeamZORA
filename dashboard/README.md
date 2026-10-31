@@ -41,6 +41,27 @@ Danach `http://127.0.0.1:3000` öffnen. Beim ersten Start wird ein Passwort gene
 > Wenn du das Dashboard öffentlich erreichbar machst, setze ein starkes Passwort und betreibe es hinter einem
 > Reverse-Proxy mit HTTPS.
 
+## Eigene Emojis, Deutsch und Inhalte
+
+- **Emoji-Set:** `emojis/` enthält 674 eigene Emojis: 82 Symbole in Pink, Blau, Weiß, Grün, Rot, Gelb, Lila und
+  Orange, dazu Punkte und Quadrate auch in Schwarz. Beim Start importiert der Bot sie als **App-Emojis**. Die
+  funktionieren auf jedem Server und belegen keine Server-Emoji-Plätze. Den Fortschritt siehst du im Tab „Emojis“.
+  Neu importieren kannst du dort oder in der Konsole mit `emojis` bzw. `emojis reset`.
+- **Keine Standard-Emojis:** Alle ausgehenden Nachrichten laufen durch `src/functions/customEmojis.js`.
+  Standard-Emojis (Zuordnung in `emojis/mapping.json`) und Shortcodes wie `:z_heart_pink:` werden durch die eigenen
+  Emojis ersetzt. Wo Discord keine eigenen Emojis anzeigen kann (Embed-Titel, Feldnamen, Footer), verschiebt der Bot
+  sie in das Emoji-Feld von Buttons oder lässt sie weg. Abschalten lässt sich das mit `useCustomEmojis: false`.
+- **Deutsch:** `locales/de.json` (Bot-Texte) und `config-localizations/de.json` (Standardtexte der Module). Die Sprache
+  stellst du pro Bot unter „Einstellungen“ ein; neue Bots sind auf Deutsch.
+- **Inhalte bearbeiten:** Im Tab „Inhalte“ bearbeitest du alle Einstellungen jedes aktiven Moduls:
+  - Texte und Embeds mit Live-Vorschau, Platzhaltern und Emoji-Picker
+  - Kanal- und Rollenauswahl, Listen und Zuordnungen
+  - Mehrfach-Einträge (z. B. Ticket-Kategorien)
+
+  Läuft der Bot, lädt er Änderungen sofort neu.
+
+Emojis neu rendern (nur nach Änderungen an `emojis/glyphs.js`, braucht Playwright): `node emojis/build.js`
+
 ## Funktionen
 
 - **Übersicht:** Status, Uptime und RAM aller Bots sowie Systeminfos. Alle Bots lassen sich gemeinsam starten oder stoppen.

@@ -13,6 +13,7 @@ const PORT = Number(process.env.DASHBOARD_PORT || 3000);
 const HOST = process.env.DASHBOARD_HOST || '127.0.0.1';
 const STORAGE = path.resolve(process.env.DASHBOARD_DATA || path.join(__dirname, '..', 'bots'));
 const PUBLIC_DIR = path.join(__dirname, 'public');
+const EMOJI_DIR = path.resolve(__dirname, '..', 'emojis');
 const SESSION_TTL = 1000 * 60 * 60 * 24 * 7;
 const MIME = {
     '.html': 'text/html; charset=utf-8',
@@ -20,7 +21,21 @@ const MIME = {
     '.js': 'application/javascript; charset=utf-8',
     '.svg': 'image/svg+xml',
     '.json': 'application/json; charset=utf-8',
-    '.ico': 'image/x-icon'
+    '.ico': 'image/x-icon',
+    '.png': 'image/png'
+};
+
+function readJSONFile(file, fallback) {
+    try {
+        return JSON.parse(fs.readFileSync(file, 'utf8'));
+    } catch {
+        return fallback;
+    }
+}
+
+const EMOJI_META = {
+    manifest: readJSONFile(path.join(EMOJI_DIR, 'manifest.json'), {emojis: [], colors: {}, glyphs: {}}),
+    mapping: readJSONFile(path.join(EMOJI_DIR, 'mapping.json'), {})
 };
 
 const manager = new BotManager(STORAGE);
@@ -108,8 +123,18 @@ function readBody(req) {
     });
 }
 
+function serveEmoji(res, name) {
+    fs.readFile(path.join(EMOJI_DIR, 'png', `${name}.png`), (err, data) => {
+        if (err) return send(res, 404, {error: 'Nicht gefunden'});
+        res.writeHead(200, {'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400'});
+        res.end(data);
+    });
+}
+
 function serveStatic(req, res) {
     const urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    const emoji = urlPath.match(/^\/emojis\/(?<name>z_[a-z0-9_]+)\.png$/);
+    if (emoji) return serveEmoji(res, emoji.groups.name);
     const file = path.normalize(path.join(PUBLIC_DIR, urlPath === '/' ? 'index.html' : urlPath));
     if (!file.startsWith(PUBLIC_DIR)) return send(res, 403, {error: 'Verboten'});
     fs.readFile(file, (err, data) => {
@@ -213,6 +238,8 @@ async function handleBotRoute(req, res, id, action) {
         await manager.remove(id);
         return send(res, 200, {ok: true});
     }
+    if (action === 'emojis' && method === 'GET') return send(res, 200, manager.emojiStatus(id) || {});
+    if (action === 'guild' && method === 'GET') return send(res, 200, manager.guildCache(id) || {});
     if (action === 'stream' && method === 'GET') {
         manager.get(id);
         return openStream(req, res, id);
@@ -261,6 +288,18 @@ async function handleApi(req, res, pathname) {
     }
     if (pathname === '/api/overview') return send(res, 200, {bots: manager.list(), system: systemInfo()});
     if (pathname === '/api/meta') return send(res, 200, {modules: listAvailableModules(), schema: configSchema()});
+    if (pathname === '/api/emojis') return send(res, 200, EMOJI_META);
+    const content = pathname.match(/^\/api\/bots\/(?<id>[a-f0-9]{12})\/content\/(?<module>[a-z0-9_-]+)(?:\/(?<file>[a-z0-9_.-]+\.json))?$/i);
+    if (content) {
+        const {id, module: moduleName, file} = content.groups;
+        if (req.method === 'GET' && !file) return send(res, 200, {files: manager.moduleContent(id, moduleName)});
+        if (req.method === 'PUT' && file) {
+            const body = await readBody(req);
+            manager.saveModuleContent(id, moduleName, file, body.value);
+            return send(res, 200, {files: manager.moduleContent(id, moduleName)});
+        }
+        return send(res, 405, {error: 'Methode nicht erlaubt'});
+    }
     if (pathname === '/api/stream') return openStream(req, res, null);
     if (pathname === '/api/bots' && req.method === 'POST') {
         const created = manager.create(await readBody(req));

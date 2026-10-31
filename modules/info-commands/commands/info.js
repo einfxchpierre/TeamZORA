@@ -215,7 +215,7 @@ async function sendUserInfo(interaction, member) {
         let dateString = `${birthday.day}.${birthday.month}${birthday.year ? `.${birthday.year}` : ''}`;
         if (birthday.year) {
             const age = new AgeFromDate(new Date(birthday.year, birthday.month - 1, birthday.day)).age;
-            dateString = `[${dateString}](https://scnx.xyz/${interaction.client.locale === 'de' ? 'de/' : ''}custom-bot/age-calculator?age=${age} "${localize('info-commands', 'age-hover', {a: age})}")`;
+            dateString = `${dateString} (${localize('info-commands', 'age-hover', {a: age})})`;
         }
         embed.addField(moduleStrings.userinfo.birthday, dateString, true);
     }
