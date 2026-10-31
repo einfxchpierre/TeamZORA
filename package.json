@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node main.js",
+    "dashboard": "node dashboard/server.js",
     "test": "npx eslint ./",
     "test:unit": "jest tests/",
     "lint": "npx eslint ./",

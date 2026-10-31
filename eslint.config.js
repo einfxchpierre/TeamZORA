@@ -222,5 +222,14 @@ module.exports = [
             '@stylistic/wrap-regex': 'error',
             '@stylistic/yield-star-spacing': 'error'
         }
+    },
+    {
+        files: ['dashboard/public/**/*.js'],
+        languageOptions: {
+            sourceType: 'script',
+            globals: {
+                ...globals.browser
+            }
+        }
     }
 ];
