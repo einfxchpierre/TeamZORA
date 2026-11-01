@@ -1,48 +1,25 @@
-# TeamZORA Panel – erzeugt von setup.sh (Änderungen werden beim nächsten Setup überschrieben)
-#
-# nginx lauscht nur auf 127.0.0.1. Von außen ist das Panel ausschließlich über den
-# Cloudflare-Tunnel (https://{{DOMAIN}}) erreichbar – die Server-IP bleibt verborgen.
-#
-#   Internet → Cloudflare → cloudflared (Tunnel) → nginx 127.0.0.1:{{NGINX_PORT}} → Panel 127.0.0.1:{{PANEL_PORT}}
+# nginx-Config für das TeamZORA-Panel.
+# Wird von "./setup.sh --domain {{DOMAIN}}" bzw. "./deploy/tunnel.sh {{DOMAIN}}" automatisch eingerichtet.
+# Das Panel selbst lauscht nur lokal auf 127.0.0.1:{{PANEL_PORT}}, der Cloudflare-Tunnel kommt über nginx rein.
 
 server {
-    # Nur lokal (IPv4 + IPv6), damit der Tunnel „localhost“ in beiden Varianten erreicht.
-    # Port 80 nur auf localhost: falls der Tunnel auf http://localhost zeigt, landet er hier statt
-    # auf der nginx-Standardseite (404). Öffentlich bleibt Port 80 davon unberührt.
     listen 127.0.0.1:{{NGINX_PORT}};
-    listen [::1]:{{NGINX_PORT}};
-    listen 127.0.0.1:80;
-    listen [::1]:80;
-    server_name {{DOMAIN}} localhost 127.0.0.1;
+    server_name {{DOMAIN}};
 
-    server_tokens off;
-    client_max_body_size 12m;   # Bot-Profilbilder
-
-    # Echte Besucher-IP aus dem Cloudflare-Header übernehmen (nur vom lokalen Tunnel vertrauen)
-    set_real_ip_from 127.0.0.1;
-    set_real_ip_from ::1;
-    real_ip_header CF-Connecting-IP;
-
-    access_log /var/log/nginx/teamzora-panel.access.log;
-    error_log  /var/log/nginx/teamzora-panel.error.log;
-
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "same-origin" always;
-    add_header Strict-Transport-Security "max-age=31536000" always;
+    client_max_body_size 12m;
 
     location / {
         proxy_pass http://127.0.0.1:{{PANEL_PORT}};
         proxy_http_version 1.1;
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP $http_cf_connecting_ip;
+        proxy_set_header X-Forwarded-For $http_cf_connecting_ip;
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header Connection "";
 
-        # Live-Updates (Server-Sent Events) ohne Puffer und mit langem Timeout
+        # Live-Updates im Panel (Server-Sent Events): nicht puffern, Verbindung lange offen halten
         proxy_buffering off;
         proxy_cache off;
         proxy_read_timeout 1h;
-        proxy_send_timeout 1h;
     }
 }

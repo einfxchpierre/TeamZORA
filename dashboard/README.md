@@ -51,12 +51,11 @@ Das Script `deploy/tunnel.sh` erledigt Folgendes:
 
 1. Das Panel lauscht nur noch auf `127.0.0.1`. In `.dashboard.env` setzt es `PANEL_URL=https://bots.hostl.eu` und
    `TRUST_PROXY=1`.
-2. Es installiert nginx (falls nötig) und legt `/etc/nginx/sites-available/teamzora-panel` an. Vorlage:
-   `deploy/nginx-panel.conf.template`. nginx lauscht ebenfalls nur auf `127.0.0.1:8090` (anpassbar mit `NGINX_PORT`),
-   übernimmt die echte Besucher-IP aus `CF-Connecting-IP`, lässt Live-Updates ungepuffert durch und lehnt fremde
-   Hostnamen ab.
+2. Es installiert nginx (falls nötig) und legt `/etc/nginx/sites-available/teamzora-panel` an, im selben Schema wie
+   eure anderen Seiten: `listen 127.0.0.1:80`, `server_name bots.hostl.eu`, Besucher-IP aus `CF-Connecting-IP`.
+   Vorlage: `deploy/nginx-panel.conf.template`. Zusätzlich lässt nginx die Live-Updates ungepuffert durch.
 3. Es verbindet den Cloudflare Tunnel:
-   - **Lokal verwalteter Tunnel** (`/etc/cloudflared/config.yml`): Die Regel `bots.hostl.eu → http://127.0.0.1:8090`
+   - **Lokal verwalteter Tunnel** (`/etc/cloudflared/config.yml`): Die Regel `bots.hostl.eu → http://localhost:80`
      wird vor der `http_status:404`-Regel eingetragen (mit Backup). Außerdem setzt das Script den DNS-Eintrag per
      `cloudflared tunnel route dns` und startet cloudflared neu.
    - **Tunnel aus dem Cloudflare-Dashboard** (mit Token): Das Script zeigt dir, welchen Public Hostname du unter
@@ -64,8 +63,7 @@ Das Script `deploy/tunnel.sh` erledigt Folgendes:
 4. Sitzungs-Cookies werden als `Secure` gesetzt, und die Login-Sperre zählt pro echter Besucher-IP.
 
 Bei Problemen (z. B. 404 oder 502) zeigt `./deploy/doctor.sh bots.hostl.eu`, an welcher Stelle es hakt: Panel, nginx,
-Tunnel-Eintrag oder DNS. Der Tunnel kann auf `http://127.0.0.1:8090` oder `http://localhost` zeigen, beides landet
-beim Panel.
+Tunnel-Eintrag oder DNS. Der Tunnel muss für `bots.hostl.eu` auf `http://localhost:80` zeigen, wie bei euren anderen Domains.
 
 Danach im Discord Developer Portal als Redirect `https://bots.hostl.eu/auth/callback` eintragen und alte offene Ports
 (z. B. `ufw deny 3600`) schließen. In Cloudflare dürfen für die Domain keine A-Records mit der Server-IP existieren.

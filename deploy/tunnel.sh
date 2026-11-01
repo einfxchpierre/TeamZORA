@@ -4,12 +4,12 @@
 #   ./deploy/tunnel.sh                     Domain bots.hostl.eu
 #   ./deploy/tunnel.sh panel.example.de    andere Domain
 #
-# Umgebungsvariablen: NGINX_PORT (Standard 8090), CF_CONFIG (Pfad zur cloudflared config.yml)
+# Umgebungsvariablen: NGINX_PORT (Standard 80), CF_CONFIG (Pfad zur cloudflared config.yml)
 set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")/.."
 
 DOMAIN="${1:-${PANEL_DOMAIN:-bots.hostl.eu}}"
-NGINX_PORT="${NGINX_PORT:-8090}"
+NGINX_PORT="${NGINX_PORT:-80}"
 ENV_FILE=".dashboard.env"
 SITE_NAME="teamzora-panel"
 
@@ -54,9 +54,7 @@ else
     LINK=""
 fi
 sed -e "s|{{DOMAIN}}|$DOMAIN|g" -e "s|{{NGINX_PORT}}|$NGINX_PORT|g" -e "s|{{PANEL_PORT}}|$PANEL_PORT|g" \
-    deploy/nginx-panel.conf.template \
-    | { if [ -f /proc/net/if_inet6 ]; then cat; else grep -v 'listen \[::1\]'; fi; } \
-    | $SUDO tee "$TARGET" >/dev/null
+    deploy/nginx-panel.conf.template | $SUDO tee "$TARGET" >/dev/null
 [ -n "$LINK" ] && $SUDO ln -sf "$TARGET" "$LINK"
 $SUDO nginx -t >/dev/null 2>&1 || { $SUDO nginx -t; fail "nginx-Konfiguration fehlerhaft."; }
 $SUDO systemctl enable --now nginx >/dev/null 2>&1 || true
@@ -65,7 +63,7 @@ ok "nginx: $TARGET → 127.0.0.1:$NGINX_PORT"
 
 # ---------------------------------------------------------------- Cloudflare Tunnel
 step "Cloudflare Tunnel verbinden"
-SERVICE="http://127.0.0.1:$NGINX_PORT"
+SERVICE="http://localhost:$NGINX_PORT"
 CF_CONFIG="${CF_CONFIG:-}"
 if [ -z "$CF_CONFIG" ]; then
     for f in /etc/cloudflared/config.yml /etc/cloudflared/config.yaml "$HOME/.cloudflared/config.yml" "$HOME/.cloudflared/config.yaml"; do
@@ -113,7 +111,7 @@ if [ "$MANUAL" -eq 1 ]; then
     echo
     echo "   Cloudflare Zero Trust → Networks → Tunnels → dein Tunnel → ${bold}Public Hostname → Add${reset}"
     echo "     Subdomain: ${bold}${DOMAIN%%.*}${reset}   Domain: ${bold}${DOMAIN#*.}${reset}"
-    echo "     Service:   ${bold}HTTP${reset}  URL: ${bold}127.0.0.1:$NGINX_PORT${reset}"
+    echo "     Service:   ${bold}HTTP${reset}  URL: ${bold}localhost:$NGINX_PORT${reset}"
     echo
     if ! command -v cloudflared >/dev/null 2>&1; then
         echo "Noch kein Tunnel? Im selben Menü „Create a tunnel“ → Cloudflared wählen und den angezeigten"
