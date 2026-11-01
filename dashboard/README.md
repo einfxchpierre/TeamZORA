@@ -41,6 +41,31 @@ Danach `http://127.0.0.1:3000` öffnen. Beim ersten Start wird ein Passwort gene
 > Wenn du das Dashboard öffentlich erreichbar machst, setze ein starkes Passwort und betreibe es hinter einem
 > Reverse-Proxy mit HTTPS.
 
+## Veröffentlichen über Cloudflare Tunnel (ohne IP-Leak)
+
+```bash
+./setup.sh --domain bots.hostl.eu      # oder: ./deploy/tunnel.sh bots.hostl.eu
+```
+
+Das Script `deploy/tunnel.sh` erledigt Folgendes:
+
+1. Das Panel lauscht nur noch auf `127.0.0.1`. In `.dashboard.env` setzt es `PANEL_URL=https://bots.hostl.eu` und
+   `TRUST_PROXY=1`.
+2. Es installiert nginx (falls nötig) und legt `/etc/nginx/sites-available/teamzora-panel` an. Vorlage:
+   `deploy/nginx-panel.conf.template`. nginx lauscht ebenfalls nur auf `127.0.0.1:8090` (anpassbar mit `NGINX_PORT`),
+   übernimmt die echte Besucher-IP aus `CF-Connecting-IP`, lässt Live-Updates ungepuffert durch und lehnt fremde
+   Hostnamen ab.
+3. Es verbindet den Cloudflare Tunnel:
+   - **Lokal verwalteter Tunnel** (`/etc/cloudflared/config.yml`): Die Regel `bots.hostl.eu → http://127.0.0.1:8090`
+     wird vor der `http_status:404`-Regel eingetragen (mit Backup). Außerdem setzt das Script den DNS-Eintrag per
+     `cloudflared tunnel route dns` und startet cloudflared neu.
+   - **Tunnel aus dem Cloudflare-Dashboard** (mit Token): Das Script zeigt dir, welchen Public Hostname du unter
+     Zero Trust → Networks → Tunnels eintragen musst.
+4. Sitzungs-Cookies werden als `Secure` gesetzt, und die Login-Sperre zählt pro echter Besucher-IP.
+
+Danach im Discord Developer Portal als Redirect `https://bots.hostl.eu/auth/callback` eintragen und alte offene Ports
+(z. B. `ufw deny 3600`) schließen. In Cloudflare dürfen für die Domain keine A-Records mit der Server-IP existieren.
+
 ## Panel mit Discord-Login
 
 Das Panel ist aufgebaut wie ein richtiges Bot-Panel:

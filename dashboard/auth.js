@@ -27,9 +27,14 @@ function parseCookies(req) {
     return out;
 }
 
+/** Adds "Secure" when the panel is served via HTTPS (e.g. behind the Cloudflare tunnel). */
+function cookieFlags() {
+    return (process.env.PANEL_URL || '').startsWith('https://') ? 'HttpOnly; Secure; SameSite=Lax' : 'HttpOnly; SameSite=Lax';
+}
+
 function sessionCookie(token) {
-    if (!token) return 'dash_session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0';
-    return `dash_session=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${SESSION_TTL / 1000}`;
+    if (!token) return `dash_session=; ${cookieFlags()}; Path=/; Max-Age=0`;
+    return `dash_session=${token}; ${cookieFlags()}; Path=/; Max-Age=${SESSION_TTL / 1000}`;
 }
 
 function isSnowflake(id) {
@@ -170,4 +175,4 @@ class Auth {
     }
 }
 
-module.exports = {Auth, isSnowflake, sessionCookie};
+module.exports = {Auth, isSnowflake, sessionCookie, cookieFlags};

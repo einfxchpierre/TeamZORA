@@ -11,7 +11,7 @@ const http = require('http');
 const os = require('os');
 const path = require('path');
 const discord = require('./discord');
-const {Auth, sessionCookie} = require('./auth');
+const {Auth, cookieFlags, sessionCookie} = require('./auth');
 const {BotManager, configSchema, listAvailableModules} = require('./botManager');
 
 const PORT = Number(process.env.DASHBOARD_PORT || 3000);
@@ -214,7 +214,7 @@ async function handleAuth(req, res, pathname) {
     if (pathname === '/auth/login') {
         if (!discord.oauthConfigured()) return redirect(res, '/#/login?error=oauth');
         const state = auth.newState();
-        return redirect(res, discord.authorizeURL(state), {'Set-Cookie': `oauth_state=${state}; HttpOnly; SameSite=Lax; Path=/auth; Max-Age=600`});
+        return redirect(res, discord.authorizeURL(state), {'Set-Cookie': `oauth_state=${state}; ${cookieFlags()}; Path=/auth; Max-Age=600`});
     }
     if (pathname === '/auth/callback') {
         if (!auth.consumeState(url.searchParams.get('state'), req) || !url.searchParams.get('code')) return redirect(res, '/#/login?error=state');
@@ -233,8 +233,20 @@ async function handleAuth(req, res, pathname) {
     send(res, 404, {error: 'Nicht gefunden'});
 }
 
+/**
+ * Client IP; behind nginx/Cloudflare (TRUST_PROXY=1) the forwarded header from localhost is used.
+ * @param {Request} req
+ * @returns {string}
+ */
+function clientIP(req) {
+    const remote = req.socket.remoteAddress || '';
+    const local = ['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(remote);
+    if (process.env.TRUST_PROXY === '1' && local && req.headers['x-real-ip']) return String(req.headers['x-real-ip']);
+    return remote;
+}
+
 async function handlePasswordLogin(req, res) {
-    const ip = req.socket.remoteAddress;
+    const ip = clientIP(req);
     const now = Date.now();
     const attempts = (loginAttempts.get(ip) || []).filter(t => now - t < 600000);
     if (attempts.length >= 10) return send(res, 429, {error: 'Zu viele Versuche. Bitte später erneut probieren.'});

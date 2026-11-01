@@ -5,6 +5,7 @@
 #   ./setup.sh -y         ohne Rückfragen (Standardwerte bzw. DASHBOARD_* Umgebungsvariablen)
 #   ./setup.sh --reconfigure   Port/Passwort neu festlegen
 #   ./setup.sh --discord       Discord-Login einrichten
+#   ./setup.sh --domain bots.hostl.eu   über nginx + Cloudflare Tunnel veröffentlichen
 #
 set -euo pipefail
 
@@ -15,12 +16,16 @@ APP_NAME="teamzora-dashboard"
 ASSUME_YES=0
 RECONFIGURE=0
 DISCORD_SETUP=0
-for arg in "$@"; do
+DOMAIN_SETUP=""
+while [ $# -gt 0 ]; do
+    arg="$1"; shift
     case "$arg" in
+        --domain)
+            if [ $# -gt 0 ] && [[ "$1" != -* ]]; then DOMAIN_SETUP="$1"; shift; else DOMAIN_SETUP="bots.hostl.eu"; fi ;;
         -y|--yes) ASSUME_YES=1 ;;
         --reconfigure) RECONFIGURE=1 ;;
         --discord) DISCORD_SETUP=1 ;;
-        -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
+        -h|--help) sed -n '2,10p' "$0"; exit 0 ;;
         *) echo "Unbekannte Option: $arg"; exit 1 ;;
     esac
 done
@@ -100,6 +105,19 @@ else
     SHOW_PASSWORD="$PASSWORD"
 fi
 
+# ---------------------------------------------------------------- Domain / Cloudflare Tunnel
+if [ -z "$DOMAIN_SETUP" ] && ! grep -qE '^PANEL_URL=https://' "$ENV_FILE" && [ "$ASSUME_YES" -eq 0 ] && [ -t 0 ]; then
+    step "Veröffentlichen über Cloudflare Tunnel (empfohlen)"
+    echo "Das Panel läuft dann nur lokal; nginx + Cloudflare Tunnel machen es unter deiner Domain"
+    echo "erreichbar, ohne offene Ports und ohne dass die Server-IP sichtbar wird."
+    if [[ "$(ask "Jetzt einrichten? (j/n)" "j")" =~ ^[jJyY] ]]; then
+        DOMAIN_SETUP="$(ask "Domain" "bots.hostl.eu")"
+    fi
+fi
+if [ -n "$DOMAIN_SETUP" ]; then
+    ./deploy/tunnel.sh "$DOMAIN_SETUP"
+fi
+
 # ---------------------------------------------------------------- Discord-Login
 env_has() { grep -qE "^$1=.+" "$ENV_FILE" 2>/dev/null; }
 if [ "$DISCORD_SETUP" -eq 1 ] || { ! env_has DISCORD_CLIENT_ID && [ "$ASSUME_YES" -eq 0 ] && [ -t 0 ]; }; then
@@ -108,7 +126,8 @@ if [ "$DISCORD_SETUP" -eq 1 ] || { ! env_has DISCORD_CLIENT_ID && [ "$ASSUME_YES
     echo "im Discord Developer Portal (https://discord.com/developers/applications)."
     if [[ "$(ask "Discord-Login jetzt einrichten? (j/n)" "n")" =~ ^[jJyY] ]]; then
         CUR_PORT="$(grep -E '^DASHBOARD_PORT=' "$ENV_FILE" | cut -d= -f2-)"
-        DEFAULT_URL="http://$(hostname -I 2>/dev/null | awk '{print $1}'):${CUR_PORT:-3000}"
+        DEFAULT_URL="$(grep -E '^PANEL_URL=' "$ENV_FILE" | tail -1 | cut -d= -f2-)"
+        DEFAULT_URL="${DEFAULT_URL:-http://$(hostname -I 2>/dev/null | awk '{print $1}'):${CUR_PORT:-3000}}"
         PANEL_URL_IN="$(ask "Öffentliche Adresse des Panels" "$DEFAULT_URL")"
         echo "Trage im Developer Portal unter OAuth2 → Redirects ein:  ${bold}${PANEL_URL_IN%/}/auth/callback${reset}"
         CLIENT_ID="$(ask "Client-ID" "")"
@@ -147,10 +166,15 @@ fi
 env_get() { grep -E "^$1=" "$ENV_FILE" | tail -1 | cut -d= -f2-; }
 DASHBOARD_PORT="$(env_get DASHBOARD_PORT)"
 URL_HOST="$(env_get DASHBOARD_HOST)"
+PUBLIC_URL="$(env_get PANEL_URL)"
 [ "$URL_HOST" = "0.0.0.0" ] && URL_HOST="$(hostname -I 2>/dev/null | awk '{print $1}')"
 echo
 echo "${bold}${green}Fertig!${reset}"
-echo "  Dashboard:  ${bold}http://${URL_HOST:-localhost}:${DASHBOARD_PORT}${reset}"
+if [ -n "$PUBLIC_URL" ]; then
+    echo "  Dashboard:  ${bold}${PUBLIC_URL}${reset}  ${dim}(lokal: http://127.0.0.1:${DASHBOARD_PORT})${reset}"
+else
+    echo "  Dashboard:  ${bold}http://${URL_HOST:-localhost}:${DASHBOARD_PORT}${reset}"
+fi
 if [ -n "${SHOW_PASSWORD:-}" ]; then
     echo "  Passwort:   ${bold}${SHOW_PASSWORD}${reset}  ${dim}(steht auch in $ENV_FILE)${reset}"
 else
