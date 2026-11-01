@@ -431,10 +431,9 @@
         const bodyHTML = f.configElements ? elementsHTML(f) : fieldsHTML(f.fields, draft(), [], f.categories);
         container.innerHTML = `
             <div class="ed-top">
-                <a class="btn btn-ghost btn-sm" href="#/bot/${ed.ctx.botId}/content">${icon('back')}Alle Module</a>
-                <h2>${e(ed.ctx.moduleLabel)}</h2>
+                <a class="btn btn-ghost btn-sm" href="${e(ed.ctx.backHref || '#/')}">${icon('back')}${e(ed.ctx.moduleLabel)}</a>
             </div>
-            ${ed.files.length > 1 ? `<div class="chips ed-files">${ed.files.map((x, i) => `<button type="button" class="chip${i === ed.fileIdx ? ' active' : ''}" data-file="${i}">${e(x.humanName)}${ed.dirty.has(i) ? ' •' : ''}</button>`).join('')}</div>` : ''}
+            ${ed.files.length > 1 && !ed.ctx.fileName ? `<div class="chips ed-files">${ed.files.map((x, i) => `<button type="button" class="chip${i === ed.fileIdx ? ' active' : ''}" data-file="${i}">${e(x.humanName)}${ed.dirty.has(i) ? ' •' : ''}</button>`).join('')}</div>` : ''}
             <div class="card ed-card">
                 <div class="card-head"><div><h3>${icon('pencil')}${e(f.humanName)}</h3>${f.description ? `<small class="muted">${e(f.description)}</small>` : ''}</div></div>
                 <div class="card-pad">
@@ -683,14 +682,14 @@
         ctx.container.innerHTML = '<div class="empty muted">Lade Inhalte…</div>';
         const [data, guild] = await Promise.all([
             ctx.api('GET', `/api/bots/${ctx.botId}/content/${ctx.moduleName}`),
-            ctx.api('GET', `/api/bots/${ctx.botId}/guild`).catch(() => ({})),
+            ctx.guildData ? Promise.resolve(ctx.guildData) : ctx.api('GET', `/api/bots/${ctx.botId}/guild`).catch(() => ({})),
             loadEmojiMeta()
         ]);
         ed.files = data.files;
         ed.drafts = ed.files.map(f => clone(f.value));
         ed.dirty = new Set();
         ed.open = new Set();
-        ed.fileIdx = 0;
+        ed.fileIdx = Math.max(0, ed.files.findIndex(f => f.filename === ctx.fileName));
         ed.guild = guild && guild.channels ? guild : null;
         if (!ed.files.length) {
             ctx.container.innerHTML = '<div class="card empty"><h3>Keine Inhalte</h3><p>Dieses Modul hat keine bearbeitbaren Einstellungen.</p></div>';

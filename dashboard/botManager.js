@@ -24,6 +24,21 @@ const READY_MARKERS = LANGUAGES
     .map(l => readJSON(path.join(ROOT, 'locales', `${l}.json`), {main: {}}).main['bot-ready'])
     .filter(Boolean);
 const SECRET_FIELDS = ['token'];
+const CORE_DE = {
+    token: ['Bot-Token', 'Token aus dem Discord Developer Portal (Bot → Reset Token).'],
+    prefix: ['Prefix', 'Prefix für ältere Textbefehle.'],
+    botOperators: ['Bot-Operatoren (Nutzer-IDs)', 'Diese Nutzer dürfen die Konfiguration neu laden und Systemaktionen ausführen. Nur Personen eintragen, denen du voll vertraust.'],
+    guildID: ['Server-ID', 'ID des Discord-Servers, auf dem der Bot arbeitet.'],
+    disableStatus: ['Bot-Status ausblenden', 'Wenn aktiv, zeigt der Bot in Discord keinen Status an.'],
+    'user_presence': ['Bot-Status', 'Wird in Discord als „Spielt …“ angezeigt.'],
+    logLevel: ['Log-Level', 'Wie ausführlich der Bot protokolliert. Im Zweifel so lassen.'],
+    logChannelID: ['Log-Kanal', 'Standard-Kanal für Hinweise der Module und wichtige Bot-Meldungen.'],
+    timezone: ['Zeitzone', 'Zeitzone, in der der Bot arbeitet.'],
+    disableEveryoneProtection: ['@everyone/@here erlauben', 'Erlaubt @everyone- und @here-Pings in Nachrichten, die du im Panel einstellst.'],
+    syncCommandGlobally: ['Befehle global synchronisieren', 'Befehle werden global registriert (erscheinen auch auf anderen Servern, funktionieren dort aber nicht). Kann bis zu 2 Stunden dauern.'],
+    allowedPrivilegedIntents: ['Erlaubte privilegierte Intents', 'Für sehr große Bots: Intents, die Discord freigegeben hat (GuildMembers, GuildPresences, MessageContent). Leer = alle.'],
+    useCustomEmojis: ['Eigene Emojis verwenden', 'Importiert das TeamZORA-Emoji-Set und ersetzt Standard-Emojis in allen Bot-Nachrichten.']
+};
 const FALLBACK_LABELS = {
     token: 'Bot-Token',
     guildID: 'Server-ID (Guild ID)',
@@ -90,8 +105,8 @@ function configSchema() {
     const example = readJSON(path.join(ROOT, 'config-generator', 'config.json'), {content: []});
     return example.content.filter(f => f.name).map(f => ({
         name: f.name,
-        humanName: FALLBACK_LABELS[f.name] || localized(f.humanName, f.name),
-        description: localized(f.description, ''),
+        humanName: CORE_DE[f.name] ? CORE_DE[f.name][0] : FALLBACK_LABELS[f.name] || localized(f.humanName, f.name),
+        description: CORE_DE[f.name] ? CORE_DE[f.name][1] : localized(f.description, ''),
         type: f.type,
         content: f.content || null,
         hidden: !!f.hidden,
@@ -161,8 +176,35 @@ function createRuntime(entry) {
         restartTimer: null,
         stopRequested: false,
         logs: [],
+        problems: [],
+        history: [],
         logSeq: 0
     };
+}
+
+/**
+ * Records problems from log lines (errors, disabled modules, config warnings).
+ * @param {Object} bot
+ * @param {string} line
+ */
+function detectProblem(bot, line) {
+    let level = null;
+    let title = null;
+    if ((/^\[(?:ERROR|FATAL)\]/).test(line)) {
+        level = 'error';
+        title = 'Fehler';
+    } else if ((/(?:got disabled because|wurde deaktiviert, weil)/).test(line)) {
+        level = 'error';
+        title = 'Modul deaktiviert';
+    } else if ((/^\[WARN\].*(?:\[CONFIGURATION\]|not found|nicht gefunden|could not|konnte nicht)/i).test(line)) {
+        level = 'warn';
+        title = 'Warnung';
+    }
+    if (!level) return;
+    const text = line.replace(/^\[[A-Z]+\]\s*/, '').slice(0, 600);
+    if (bot.problems.some(p => p.text === text)) return;
+    bot.problems.push({level, title, text, time: new Date().toISOString(), action: 'console'});
+    if (bot.problems.length > 50) bot.problems.shift();
 }
 
 /**
@@ -202,6 +244,81 @@ class BotManager extends EventEmitter {
         for (const entry of readJSON(this.registryFile, [])) {
             this.bots.set(entry.id, createRuntime(entry));
         }
+        // RAM history for the dashboard chart (every 30 s, last 24 h)
+        this.sampler = setInterval(() => this.sample(), 30000);
+        this.sampler.unref();
+    }
+
+    sample() {
+        const now = Date.now();
+        for (const bot of this.bots.values()) {
+            const mem = bot.process ? processMemory(bot.process.pid) : null;
+            bot.history.push([now, mem]);
+            if (bot.history.length > 2880) bot.history.shift();
+        }
+    }
+
+    history(id) {
+        return this.get(id).history;
+    }
+
+    /**
+     * Errors and warnings of a bot: state problems plus what the bot logged since its last start.
+     * @param {string} id
+     * @returns {Array<{level: string, title: string, text: string, time: string}>}
+     */
+    problems(id) {
+        const bot = this.get(id);
+        const config = readJSON(path.join(this.configDir(id), 'config.json'), {});
+        const out = [];
+        if (!config.token || config.token === 'yourtokengoeshere') out.push({level: 'error', title: 'Kein Bot-Token', text: 'Trage unter „Einstellungen“ den Token aus dem Discord Developer Portal ein.', action: 'settings'});
+        if (!config.guildID) out.push({level: 'error', title: 'Keine Server-ID', text: 'Trage unter „Einstellungen“ die ID deines Servers ein.', action: 'settings'});
+        if (bot.status === 'error') out.push({level: 'error', title: 'Bot gestoppt', text: bot.statusReason || 'Der Bot ist mit einem Fehler beendet worden.', action: 'console'});
+        if (!config.logChannelID) out.push({level: 'warn', title: 'Kein Log-Kanal', text: 'Ohne Log-Kanal kann der Bot wichtige Hinweise nicht im Server posten.', action: 'config'});
+        const emojis = readJSON(path.join(this.dataDir(id), 'emojis.json'), null);
+        if (emojis && emojis.lastError) out.push({level: 'warn', title: 'Emoji-Import', text: emojis.lastError, action: 'emojis'});
+        return [...out, ...bot.problems];
+    }
+
+    /**
+     * Slash commands exported by the bot (data/commands.json).
+     * @param {string} id
+     * @returns {Array<Object>}
+     */
+    commands(id) {
+        this.get(id);
+        return readJSON(path.join(this.dataDir(id), 'commands.json'), []);
+    }
+
+    /** Bot token (server side only). */
+    token(id) {
+        this.get(id);
+        const config = readJSON(path.join(this.configDir(id), 'config.json'), {});
+        return config.token && config.token !== 'yourtokengoeshere' ? config.token : null;
+    }
+
+    guildID(id) {
+        return readJSON(path.join(this.configDir(id), 'config.json'), {}).guildID || '';
+    }
+
+    setOwners(id, owners) {
+        const bot = this.get(id);
+        bot.entry.owners = [...new Set(owners.filter(o => (/^\d{15,22}$/).test(o)))];
+        this.persist();
+        this.emitUpdate(bot);
+    }
+
+    /**
+     * Deletes the stored config files of a module; the bot recreates them with defaults.
+     * @param {string} id
+     * @param {string} moduleName
+     */
+    resetModule(id, moduleName) {
+        const bot = this.get(id);
+        if (!(/^[a-z0-9_-]+$/i).test(moduleName)) throw Object.assign(new Error('Ungültiges Modul'), {status: 400});
+        fs.rmSync(path.join(this.configDir(id), moduleName), {recursive: true, force: true});
+        this.pushLog(bot, 'system', `Konfiguration von ${moduleName} zurückgesetzt.`);
+        if (bot.status === 'running') this.sendCommand(id, 'reload');
     }
 
     persist() {
@@ -261,7 +378,10 @@ class BotManager extends EventEmitter {
             restarts: bot.restarts,
             memory: bot.process ? processMemory(bot.process.pid) : null,
             enabledModules: Object.keys(modules).filter(m => modules[m]).length,
-            hasToken: !!config.token && config.token !== 'yourtokengoeshere'
+            hasToken: !!config.token && config.token !== 'yourtokengoeshere',
+            owners: bot.entry.owners || [],
+            problemCount: this.problems(bot.entry.id).filter(p => p.level === 'error').length,
+            warningCount: this.problems(bot.entry.id).filter(p => p.level === 'warn').length
         };
     }
 
@@ -285,6 +405,7 @@ class BotManager extends EventEmitter {
             autoStart: !!input.autoStart,
             autoRestart: input.autoRestart !== false,
             language: LANGUAGES.includes(input.language) ? input.language : 'de',
+            owners: Array.isArray(input.owners) ? input.owners : [],
             createdAt: new Date().toISOString()
         };
         const config = {...defaultBotConfig(), ...moduleConfig.coreConfigDefaults(entry.language)};
@@ -392,6 +513,7 @@ class BotManager extends EventEmitter {
         bot.status = 'starting';
         bot.statusReason = null;
         bot.readyAt = null;
+        bot.problems = [];
         bot.startedAt = new Date().toISOString();
         fs.mkdirSync(this.dataDir(id), {recursive: true});
         removeLegacyBranding(this.configDir(id));
@@ -439,6 +561,7 @@ class BotManager extends EventEmitter {
 
         const clean = line.replace(/\u001b\[[0-9;]*m/g, '');
         this.pushLog(bot, type, clean);
+        detectProblem(bot, clean);
         if (bot.status === 'starting' && READY_MARKERS.some(m => clean.includes(m))) {
             bot.status = 'running';
             bot.readyAt = new Date().toISOString();

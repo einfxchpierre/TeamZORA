@@ -41,6 +41,40 @@ Danach `http://127.0.0.1:3000` öffnen. Beim ersten Start wird ein Passwort gene
 > Wenn du das Dashboard öffentlich erreichbar machst, setze ein starkes Passwort und betreibe es hinter einem
 > Reverse-Proxy mit HTTPS.
 
+## Panel mit Discord-Login
+
+Das Panel ist aufgebaut wie ein richtiges Bot-Panel:
+
+- **Serverauswahl:** Deine Server mit Bot und die Server, die du verwaltest, aber die noch keinen Bot haben.
+- **Seitenleiste pro Server:** Dashboard, Probleme, Konfiguration, Module, Befehle, Emojis, Konsole, Bot-Profil,
+  Team und Einstellungen.
+- **Module:** Karten mit Schalter und „Konfiguration öffnen“. Jede Konfigurationsdatei eines Moduls hat ihren eigenen
+  Editor, und unter „Erweiterte Optionen“ setzt du ein Modul auf die Standardwerte zurück.
+- **Kanäle und Rollen:** Das Panel liest sie mit dem Bot-Token direkt bei Discord. Dafür muss der Bot nicht laufen.
+
+**Anmeldung:** Mit Discord können sich nur Accounts anmelden, die freigeschaltet sind (Admin-Bereich → „Freigeschaltete
+Accounts“ oder `PANEL_ADMINS`). Ein freigeschalteter Account sieht:
+
+- Bots von Servern, auf denen er „Server verwalten“ hat
+- Bots, bei denen er als Besitzer eingetragen ist
+
+Panel-Admins sehen alles. Das Admin-Passwort funktioniert weiterhin als Notzugang.
+
+Discord-Login einrichten: `./setup.sh --discord`. Alternativ diese Werte in `.dashboard.env` eintragen:
+
+| Variable                | Bedeutung                                                                |
+|-------------------------|--------------------------------------------------------------------------|
+| `PANEL_URL`             | Öffentliche Adresse, z. B. `https://panel.example.de`                    |
+| `DISCORD_CLIENT_ID`     | Client-ID der Discord-Application                                        |
+| `DISCORD_CLIENT_SECRET` | Client-Secret                                                            |
+| `PANEL_ADMINS`          | Discord-IDs der Panel-Admins, kommagetrennt                              |
+
+Im Developer Portal unter **OAuth2 → Redirects** `<PANEL_URL>/auth/callback` eintragen.
+
+> **Lizenz:** CustomDCBot steht unter BUSL-1.1. Das Panel ist für euer eigenes Team und eure eigenen Server gedacht.
+> Den Bot Dritten als Hosting-Dienst anzubieten (auch kostenlos oder mit Werbung) ist ohne kommerzielle Lizenz von
+> ScootKit (oss@scootkit.net) nicht erlaubt.
+
 ## Eigene Emojis, Deutsch und Inhalte
 
 - **Emoji-Set:** `emojis/` enthält 674 eigene Emojis: 82 Symbole in Pink, Blau, Weiß, Grün, Rot, Gelb, Lila und

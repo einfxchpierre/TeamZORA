@@ -4,6 +4,7 @@
 #   ./setup.sh            interaktive Einrichtung (installiert, konfiguriert, startet)
 #   ./setup.sh -y         ohne Rückfragen (Standardwerte bzw. DASHBOARD_* Umgebungsvariablen)
 #   ./setup.sh --reconfigure   Port/Passwort neu festlegen
+#   ./setup.sh --discord       Discord-Login einrichten
 #
 set -euo pipefail
 
@@ -13,11 +14,13 @@ ENV_FILE=".dashboard.env"
 APP_NAME="teamzora-dashboard"
 ASSUME_YES=0
 RECONFIGURE=0
+DISCORD_SETUP=0
 for arg in "$@"; do
     case "$arg" in
         -y|--yes) ASSUME_YES=1 ;;
         --reconfigure) RECONFIGURE=1 ;;
-        -h|--help) sed -n '2,8p' "$0"; exit 0 ;;
+        --discord) DISCORD_SETUP=1 ;;
+        -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
         *) echo "Unbekannte Option: $arg"; exit 1 ;;
     esac
 done
@@ -95,6 +98,33 @@ else
     umask 022
     ok "Gespeichert in $ENV_FILE"
     SHOW_PASSWORD="$PASSWORD"
+fi
+
+# ---------------------------------------------------------------- Discord-Login
+env_has() { grep -qE "^$1=.+" "$ENV_FILE" 2>/dev/null; }
+if [ "$DISCORD_SETUP" -eq 1 ] || { ! env_has DISCORD_CLIENT_ID && [ "$ASSUME_YES" -eq 0 ] && [ -t 0 ]; }; then
+    step "Discord-Login (optional)"
+    echo "Damit sich freigeschaltete Accounts mit Discord anmelden können, brauchst du eine Application"
+    echo "im Discord Developer Portal (https://discord.com/developers/applications)."
+    if [[ "$(ask "Discord-Login jetzt einrichten? (j/n)" "n")" =~ ^[jJyY] ]]; then
+        CUR_PORT="$(grep -E '^DASHBOARD_PORT=' "$ENV_FILE" | cut -d= -f2-)"
+        DEFAULT_URL="http://$(hostname -I 2>/dev/null | awk '{print $1}'):${CUR_PORT:-3000}"
+        PANEL_URL_IN="$(ask "Öffentliche Adresse des Panels" "$DEFAULT_URL")"
+        echo "Trage im Developer Portal unter OAuth2 → Redirects ein:  ${bold}${PANEL_URL_IN%/}/auth/callback${reset}"
+        CLIENT_ID="$(ask "Client-ID" "")"
+        read -r -s -p "Client-Secret: " CLIENT_SECRET; echo
+        ADMINS="$(ask "Deine Discord-Nutzer-ID (Panel-Admin, mehrere mit Komma)" "")"
+        sed -i '/^PANEL_URL=/d;/^DISCORD_CLIENT_ID=/d;/^DISCORD_CLIENT_SECRET=/d;/^PANEL_ADMINS=/d' "$ENV_FILE"
+        {
+            echo "PANEL_URL=${PANEL_URL_IN%/}"
+            echo "DISCORD_CLIENT_ID=$CLIENT_ID"
+            echo "DISCORD_CLIENT_SECRET=$CLIENT_SECRET"
+            echo "PANEL_ADMINS=$ADMINS"
+        } >> "$ENV_FILE"
+        ok "Discord-Login gespeichert"
+    else
+        echo "Übersprungen – später mit ./setup.sh --discord nachholen."
+    fi
 fi
 
 # ---------------------------------------------------------------- Start

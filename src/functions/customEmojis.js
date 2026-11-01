@@ -349,11 +349,33 @@ function writeGuildCache(client) {
 }
 
 /**
+ * Writes the registered slash/context commands for the dashboard's command list.
+ * @param {Client} client
+ */
+function writeCommands(client) {
+    if (!client.dataDir || !Array.isArray(client.commands)) return;
+    const list = client.commands.map(c => ({
+        name: c.name,
+        description: typeof c.description === 'string' ? c.description : '',
+        module: c.module || null,
+        contextMenu: !!c.contextMenu,
+        type: c.type || null,
+        options: (Array.isArray(c.options) ? c.options : []).map(o => ({name: o.name, description: o.description || '', type: o.type, required: !!o.required}))
+    }));
+    try {
+        fs.writeFileSync(path.join(client.dataDir, 'commands.json'), JSON.stringify(list));
+    } catch (e) {
+        client.logger.warn(`[dashboard] Befehlsliste konnte nicht gespeichert werden: ${e.message}`);
+    }
+}
+
+/**
  * Starts emoji import and keeps the guild cache up to date.
  * @param {Client} client
  */
 function init(client) {
     writeGuildCache(client);
+    writeCommands(client);
     let timer = null;
     function refresh() {
         clearTimeout(timer);
