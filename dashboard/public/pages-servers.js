@@ -18,40 +18,28 @@
         if (Z.state.session && Z.state.session.authenticated) return Z.go('/');
         const error = query.get('error');
         const oauth = Z.state.session && Z.state.session.oauth;
-        const features = [
-            ['puzzle', 'Module', 'Über 40 Funktionen – von Tickets bis Level-System, per Schalter aktiv.'],
-            ['chat', 'Nachrichten', 'Texte und Embeds mit Live-Vorschau gestalten.'],
-            ['sparkle', 'Eigene Emojis', 'Ein eigenes Emoji-Set statt Standard-Emojis.'],
-            ['users', 'Team', 'Gemeinsam mit deinem Team verwalten.']
-        ];
         $('#app').innerHTML = `
-            <div class="landing">
-                <header class="landing-top">
-                    <span class="logo">${Z.logo()}</span>
-                    <a class="btn btn-ghost btn-sm" href="https://hostl.eu" target="_blank" rel="noopener">HOSTL.eu${icon('chevron')}</a>
-                </header>
-                <main class="landing-main">
-                    <span class="eyebrow">Discord-Bot-Panel</span>
-                    <h1>Dein Bot.<br><span>Einfach verwaltet.</span></h1>
-                    <p class="landing-lead">Module aktivieren, Nachrichten gestalten und deinen Server im Blick behalten – alles an einem Ort.</p>
-                    ${error ? `<div class="reason landing-error">${icon('alert')}<span>${esc(LOGIN_ERRORS[error] || 'Anmeldung fehlgeschlagen.')}${error === 'denied' && query.get('id') ? ` <code>${esc(query.get('id'))}</code>` : ''}</span></div>` : ''}
-                    <div class="landing-cta">
-                        ${oauth ? `<a class="btn btn-discord btn-lg" href="/auth/login">${icon('discord')}Mit Discord anmelden</a>` : ''}
-                        <button class="btn btn-ghost btn-lg" id="show-pw" type="button">${icon('key')}Admin-Login</button>
-                    </div>
-                    <form class="pw-inline${oauth ? ' hidden' : ''}" id="pw-form">
-                        <input type="password" id="pw" placeholder="Admin-Passwort" autocomplete="current-password" required>
-                        <button class="btn btn-primary" type="submit">Anmelden</button>
-                    </form>
-                    <p class="form-error" id="pw-error"></p>
-                    <div class="features">${features.map(([ic, title, text]) => `<div class="feature"><span class="feature-icon">${icon(ic)}</span><strong>${title}</strong><p>${text}</p></div>`).join('')}</div>
-                </main>
-                <footer class="landing-foot">© ${new Date().getFullYear()} HOSTL.eu · FreeBot</footer>
+            <div class="login-screen">
+                <div class="login-hero">
+                    <span class="logo logo-lg">${Z.logo()}</span>
+                    <h1>Dein Discord-Bot.<br><span>Komplett in deiner Hand.</span></h1>
+                    <p>Module aktivieren, Nachrichten gestalten, Emojis, Team und Statistiken – alles in einem Panel.</p>
+                </div>
+                <div class="login-card">
+                    <h2>Anmelden</h2>
+                    <p class="muted">Melde dich mit deinem Discord-Account an, um deine Server zu verwalten.</p>
+                    ${error ? `<div class="reason">${icon('alert')}<span>${esc(LOGIN_ERRORS[error] || 'Anmeldung fehlgeschlagen.')}${error === 'denied' && query.get('id') ? ` <code>${esc(query.get('id'))}</code>` : ''}</span></div>` : ''}
+                    ${oauth ? `<a class="btn btn-discord btn-block btn-lg" href="/auth/login">${icon('discord')}Mit Discord anmelden</a>` : ''}
+                    <details class="pw-login"${oauth ? '' : ' open'}>
+                        <summary>${icon('key')}Admin-Login mit Passwort</summary>
+                        <form id="pw-form">
+                            <input type="password" id="pw" placeholder="Admin-Passwort" autocomplete="current-password" required>
+                            <button class="btn btn-primary btn-block" type="submit">${icon('login')}Anmelden</button>
+                            <p class="form-error" id="pw-error"></p>
+                        </form>
+                    </details>
+                </div>
             </div>`;
-        $('#show-pw').addEventListener('click', () => {
-            $('#pw-form').classList.toggle('hidden');
-            if (!$('#pw-form').classList.contains('hidden')) $('#pw').focus();
-        });
         $('#pw-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             try {
@@ -112,7 +100,7 @@
                 <div class="container">
                     <div class="hello">
                         <div>
-                            <h1>Hallo, ${esc(me.username)} ${'<img class="zemoji-lg" src="/emojis/z_wave_pink.png" alt="">'}</h1>
+                            <h1>Hallo, ${esc(me.username)}</h1>
                             <p class="muted">Wähle einen Server, um seinen Bot zu verwalten.</p>
                         </div>
                         <div class="actions">
