@@ -54,7 +54,9 @@ else
     LINK=""
 fi
 sed -e "s|{{DOMAIN}}|$DOMAIN|g" -e "s|{{NGINX_PORT}}|$NGINX_PORT|g" -e "s|{{PANEL_PORT}}|$PANEL_PORT|g" \
-    deploy/nginx-panel.conf.template | $SUDO tee "$TARGET" >/dev/null
+    deploy/nginx-panel.conf.template \
+    | { if [ -f /proc/net/if_inet6 ]; then cat; else grep -v 'listen \[::1\]'; fi; } \
+    | $SUDO tee "$TARGET" >/dev/null
 [ -n "$LINK" ] && $SUDO ln -sf "$TARGET" "$LINK"
 $SUDO nginx -t >/dev/null 2>&1 || { $SUDO nginx -t; fail "nginx-Konfiguration fehlerhaft."; }
 $SUDO systemctl enable --now nginx >/dev/null 2>&1 || true

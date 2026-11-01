@@ -6,8 +6,14 @@
 #   Internet → Cloudflare → cloudflared (Tunnel) → nginx 127.0.0.1:{{NGINX_PORT}} → Panel 127.0.0.1:{{PANEL_PORT}}
 
 server {
+    # Nur lokal (IPv4 + IPv6), damit der Tunnel „localhost“ in beiden Varianten erreicht.
+    # Port 80 nur auf localhost: falls der Tunnel auf http://localhost zeigt, landet er hier statt
+    # auf der nginx-Standardseite (404). Öffentlich bleibt Port 80 davon unberührt.
     listen 127.0.0.1:{{NGINX_PORT}};
-    server_name {{DOMAIN}};
+    listen [::1]:{{NGINX_PORT}};
+    listen 127.0.0.1:80;
+    listen [::1]:80;
+    server_name {{DOMAIN}} localhost 127.0.0.1;
 
     server_tokens off;
     client_max_body_size 12m;   # Bot-Profilbilder
@@ -23,11 +29,6 @@ server {
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "same-origin" always;
     add_header Strict-Transport-Security "max-age=31536000" always;
-
-    # Fremde Hostnamen ablehnen
-    if ($host != "{{DOMAIN}}") {
-        return 444;
-    }
 
     location / {
         proxy_pass http://127.0.0.1:{{PANEL_PORT}};

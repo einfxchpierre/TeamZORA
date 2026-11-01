@@ -63,6 +63,10 @@ Das Script `deploy/tunnel.sh` erledigt Folgendes:
      Zero Trust → Networks → Tunnels eintragen musst.
 4. Sitzungs-Cookies werden als `Secure` gesetzt, und die Login-Sperre zählt pro echter Besucher-IP.
 
+Bei Problemen (z. B. 404 oder 502) zeigt `./deploy/doctor.sh bots.hostl.eu`, an welcher Stelle es hakt: Panel, nginx,
+Tunnel-Eintrag oder DNS. Der Tunnel kann auf `http://127.0.0.1:8090` oder `http://localhost` zeigen, beides landet
+beim Panel.
+
 Danach im Discord Developer Portal als Redirect `https://bots.hostl.eu/auth/callback` eintragen und alte offene Ports
 (z. B. `ufw deny 3600`) schließen. In Cloudflare dürfen für die Domain keine A-Records mit der Server-IP existieren.
 
