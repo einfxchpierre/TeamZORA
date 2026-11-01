@@ -37,7 +37,7 @@ const CORE_DE = {
     disableEveryoneProtection: ['@everyone/@here erlauben', 'Erlaubt @everyone- und @here-Pings in Nachrichten, die du im Panel einstellst.'],
     syncCommandGlobally: ['Befehle global synchronisieren', 'Befehle werden global registriert (erscheinen auch auf anderen Servern, funktionieren dort aber nicht). Kann bis zu 2 Stunden dauern.'],
     allowedPrivilegedIntents: ['Erlaubte privilegierte Intents', 'Für sehr große Bots: Intents, die Discord freigegeben hat (GuildMembers, GuildPresences, MessageContent). Leer = alle.'],
-    useCustomEmojis: ['Eigene Emojis verwenden', 'Importiert das TeamZORA-Emoji-Set und ersetzt Standard-Emojis in allen Bot-Nachrichten.']
+    useCustomEmojis: ['Eigene Emojis verwenden', 'Importiert das FreeBot-Emoji-Set und ersetzt Standard-Emojis in allen Bot-Nachrichten.']
 };
 const FALLBACK_LABELS = {
     token: 'Bot-Token',
@@ -216,8 +216,8 @@ function removeLegacyBranding(configDir) {
     const strings = readJSON(file, null);
     if (!strings) return;
     let changed = false;
-    if (typeof strings.footer === 'string' && strings.footer.toLowerCase().includes('scnx')) {
-        strings.footer = 'Powered by TeamZORA';
+    if (typeof strings.footer === 'string' && (/scnx|teamzora/i).test(strings.footer)) {
+        strings.footer = 'FreeBot × HOSTL.eu';
         changed = true;
     }
     if (typeof strings.footerImgUrl === 'string' && strings.footerImgUrl.includes('scnx.xyz')) {

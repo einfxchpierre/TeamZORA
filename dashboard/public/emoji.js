@@ -197,7 +197,7 @@
             <div class="emoji-hero card">
                 <div class="emoji-hero-art">${['z_check_green', 'z_heart_pink', 'z_star_yellow', 'z_bolt_blue', 'z_party_purple', 'z_shield_white'].map(n => emojiImg(n)).join('')}</div>
                 <div class="emoji-hero-body">
-                    <h2>TeamZORA Emoji-Set</h2>
+                    <h2>FreeBot Emoji-Set</h2>
                     <p class="muted">${total} eigene Emojis in ${colors.length} Farben. Sie werden als <strong>App-Emojis</strong> in den Bot importiert – sie funktionieren auf jedem Server und belegen keine Server-Emoji-Plätze. Alle Standard-Emojis in Bot-Nachrichten werden automatisch ersetzt.</p>
                     <div class="bar bar-lg"><span style="width:${pct}%"></span></div>
                     <div class="emoji-hero-meta">

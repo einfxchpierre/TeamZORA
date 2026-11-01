@@ -258,7 +258,7 @@
         return `<div class="card mod-card${active ? ' on' : ''}">
             <div class="mod-head">
                 <span class="mod-icon">${icon(MODULE_ICONS[m.name] || 'puzzle')}</span>
-                <div><strong>${esc(m.humanName)}</strong><span class="mod-author">${icon('bot')}TeamZORA</span></div>
+                <div><strong>${esc(m.humanName)}</strong><span class="mod-author">${icon('bot')}FreeBot</span></div>
             </div>
             <p class="mod-desc">${esc(m.description)}</p>
             <div class="mod-tags">${m.tags.map(t => `<span class="tag-pill">${icon(TAG_ICONS[t] || 'tag')}${esc(TAGS[t] || t)}</span>`).join('')}${m.beta ? '<span class="tag-pill beta">Beta</span>' : ''}</div>
@@ -395,7 +395,7 @@
     /* ---------- Emojis ---------- */
 
     Z.pages['bot.emojis'] = ({id, el}) => {
-        el.innerHTML = `${pageHead('Emojis', 'Das TeamZORA-Emoji-Set für deinen Bot.')}<div id="emoji-host"></div>`;
+        el.innerHTML = `${pageHead('Emojis', 'Das FreeBot-Emoji-Set für deinen Bot.')}<div id="emoji-host"></div>`;
         return renderEmojiTab($('#emoji-host'), {botId: id, api: Z.api, toast: Z.toast, running: bot().status === 'running'}).catch(e => Z.toast(e.message, true));
     };
 

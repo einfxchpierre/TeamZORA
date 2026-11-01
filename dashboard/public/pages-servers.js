@@ -18,29 +18,40 @@
         if (Z.state.session && Z.state.session.authenticated) return Z.go('/');
         const error = query.get('error');
         const oauth = Z.state.session && Z.state.session.oauth;
+        const features = [
+            ['puzzle', 'Module', 'Über 40 Funktionen – von Tickets bis Level-System, per Schalter aktiv.'],
+            ['chat', 'Nachrichten', 'Texte und Embeds mit Live-Vorschau gestalten.'],
+            ['sparkle', 'Eigene Emojis', 'Ein eigenes Emoji-Set statt Standard-Emojis.'],
+            ['users', 'Team', 'Gemeinsam mit deinem Team verwalten.']
+        ];
         $('#app').innerHTML = `
-            <div class="login-screen">
-                <div class="login-hero">
-                    <a class="logo logo-lg"><span class="logo-mark">${icon('bot')}</span><span class="logo-text">Team<b>ZORA</b></span></a>
-                    <h1>Dein Discord-Bot.<br><span>Komplett in deiner Hand.</span></h1>
-                    <p>Module aktivieren, Nachrichten gestalten, Emojis, Team und Statistiken – alles in einem Panel.</p>
-                    <div class="login-emojis">${['z_check_green', 'z_heart_pink', 'z_star_yellow', 'z_bolt_blue', 'z_party_purple', 'z_shield_white', 'z_crown_yellow', 'z_ticket_pink', 'z_music_blue', 'z_gift_red', 'z_rocket_white', 'z_fire_orange'].map(n => `<img src="/emojis/${n}.png" alt="">`).join('')}</div>
-                </div>
-                <div class="login-card">
-                    <h2>Anmelden</h2>
-                    <p class="muted">Melde dich mit deinem Discord-Account an, um deine Server zu verwalten.</p>
-                    ${error ? `<div class="reason">${icon('alert')}<span>${esc(LOGIN_ERRORS[error] || 'Anmeldung fehlgeschlagen.')}${error === 'denied' && query.get('id') ? ` <code>${esc(query.get('id'))}</code>` : ''}</span></div>` : ''}
-                    ${oauth ? `<a class="btn btn-discord btn-block btn-lg" href="/auth/login">${icon('discord')}Mit Discord anmelden</a>` : ''}
-                    <details class="pw-login"${oauth ? '' : ' open'}>
-                        <summary>${icon('key')}Admin-Login mit Passwort</summary>
-                        <form id="pw-form">
-                            <input type="password" id="pw" placeholder="Admin-Passwort" autocomplete="current-password" required>
-                            <button class="btn btn-primary btn-block" type="submit">${icon('login')}Anmelden</button>
-                            <p class="form-error" id="pw-error"></p>
-                        </form>
-                    </details>
-                </div>
+            <div class="landing">
+                <header class="landing-top">
+                    <span class="logo">${Z.logo()}</span>
+                    <a class="btn btn-ghost btn-sm" href="https://hostl.eu" target="_blank" rel="noopener">HOSTL.eu${icon('chevron')}</a>
+                </header>
+                <main class="landing-main">
+                    <span class="eyebrow">Discord-Bot-Panel</span>
+                    <h1>Dein Bot.<br><span>Einfach verwaltet.</span></h1>
+                    <p class="landing-lead">Module aktivieren, Nachrichten gestalten und deinen Server im Blick behalten – alles an einem Ort.</p>
+                    ${error ? `<div class="reason landing-error">${icon('alert')}<span>${esc(LOGIN_ERRORS[error] || 'Anmeldung fehlgeschlagen.')}${error === 'denied' && query.get('id') ? ` <code>${esc(query.get('id'))}</code>` : ''}</span></div>` : ''}
+                    <div class="landing-cta">
+                        ${oauth ? `<a class="btn btn-discord btn-lg" href="/auth/login">${icon('discord')}Mit Discord anmelden</a>` : ''}
+                        <button class="btn btn-ghost btn-lg" id="show-pw" type="button">${icon('key')}Admin-Login</button>
+                    </div>
+                    <form class="pw-inline${oauth ? ' hidden' : ''}" id="pw-form">
+                        <input type="password" id="pw" placeholder="Admin-Passwort" autocomplete="current-password" required>
+                        <button class="btn btn-primary" type="submit">Anmelden</button>
+                    </form>
+                    <p class="form-error" id="pw-error"></p>
+                    <div class="features">${features.map(([ic, title, text]) => `<div class="feature"><span class="feature-icon">${icon(ic)}</span><strong>${title}</strong><p>${text}</p></div>`).join('')}</div>
+                </main>
+                <footer class="landing-foot">© ${new Date().getFullYear()} HOSTL.eu · FreeBot</footer>
             </div>`;
+        $('#show-pw').addEventListener('click', () => {
+            $('#pw-form').classList.toggle('hidden');
+            if (!$('#pw-form').classList.contains('hidden')) $('#pw').focus();
+        });
         $('#pw-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             try {
@@ -109,11 +120,11 @@
                             ${me.admin ? `<a class="btn btn-primary" href="#/new">${icon('plus')}Neuer Bot</a>` : ''}
                         </div>
                     </div>
-                    <h2 class="section-h">Server mit TeamZORA <span class="count">${bots.length}</span></h2>
+                    <h2 class="section-h">Server mit FreeBot <span class="count">${bots.length}</span></h2>
                     ${bots.length ? `<div class="server-grid">${bots.map(serverCard).join('')}</div>` : `
                         <div class="card empty"><span class="stat-icon">${icon('bot')}</span><h3>Noch kein Bot</h3>
                         <p>${data.without.length ? 'Richte unten für einen deiner Server einen Bot ein.' : 'Sobald du einen Bot einrichtest, erscheint er hier.'}</p></div>`}
-                    ${data.without.length ? `<h2 class="section-h">Ohne TeamZORA <span class="count">${data.without.length}</span></h2>
+                    ${data.without.length ? `<h2 class="section-h">Ohne FreeBot <span class="count">${data.without.length}</span></h2>
                         <div class="server-grid">${data.without.map(guildCard).join('')}</div>` : ''}
                     ${me.local ? '<p class="muted small center">Du bist mit dem Admin-Passwort angemeldet und siehst alle Bots. Melde dich mit Discord an, um deine eigenen Server zu sehen.</p>' : ''}
                 </div>`;

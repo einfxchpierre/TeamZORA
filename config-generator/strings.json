@@ -13,7 +13,7 @@
     {
       "name": "footer",
       "humanName": "Embed-Footer",
-      "default": "Powered by TeamZORA",
+      "default": "FreeBot × HOSTL.eu",
       "description": "Footer of every embed",
       "type": "string",
       "pro": true

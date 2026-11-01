@@ -90,8 +90,8 @@
       "default": true,
       "type": "boolean",
       "description": {
-        "en": "Imports the TeamZORA emoji set into the bot and replaces standard emojis in all bot messages with it.",
-        "de": "Importiert das TeamZORA-Emoji-Set in den Bot und ersetzt Standard-Emojis in allen Bot-Nachrichten."
+        "en": "Imports the FreeBot emoji set into the bot and replaces standard emojis in all bot messages with it.",
+        "de": "Importiert das FreeBot-Emoji-Set in den Bot und ersetzt Standard-Emojis in allen Bot-Nachrichten."
       }
     },
     {

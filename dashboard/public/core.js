@@ -216,6 +216,10 @@
 
     /* ---------- Layout ---------- */
 
+    function logo() {
+        return `<span class="logo-mark">${icon('bot')}</span><span class="logo-text"><b>FreeBot</b><span class="logo-x">×</span><span class="logo-sub">HOSTL.eu</span></span>`;
+    }
+
     const BOT_NAV = [
         {section: 'Bot'},
         {key: 'home', label: 'Dashboard', icon: 'grid'},
@@ -236,13 +240,12 @@
         $('#app').innerHTML = `
             <header class="topnav">
                 ${withSide ? `<button class="icon-btn only-mobile" id="open-side" aria-label="Menü">${icon('menu')}</button>` : ''}
-                <a class="logo" href="#/"><span class="logo-mark">${icon('bot')}</span><span class="logo-text">Team<b>ZORA</b></span></a>
+                <a class="logo" href="#/">${logo()}</a>
                 <nav class="topnav-links">
                     <a href="#/" data-top="servers">${icon('server')}<span>Server</span></a>
                     ${me.admin ? `<a href="#/admin" data-top="admin">${icon('shield')}<span>Admin</span></a>` : ''}
                 </nav>
                 <div class="topnav-right">
-                    <span class="live-dot" title="Live-Verbindung"></span>
                     <button class="user-btn" id="user-btn">${avatar(me.avatar, me.username, 'av av-sm')}<span class="hide-sm">${esc(me.username)}</span>${icon('chevronDown')}</button>
                     <div class="dropdown hidden" id="user-menu">
                         <div class="dropdown-head">${avatar(me.avatar, me.username, 'av')}<div><strong>${esc(me.username)}</strong><small>${me.admin ? 'Panel-Admin' : 'Mitglied'}</small></div></div>
@@ -419,7 +422,7 @@
     }
 
     Object.assign(Z, {
-        $, esc, api, toast, run, go, route, avatar, statusBadge, isActive, uptimeOf, formatBytes, formatDuration,
+        $, esc, api, logo, toast, run, go, route, avatar, statusBadge, isActive, uptimeOf, formatBytes, formatDuration,
         initials, openModal, closeModal, confirmDialog, currentBot, renderSide, refreshSession, STATUS_LABEL
     });
 

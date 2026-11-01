@@ -1,5 +1,5 @@
 /*
- * TeamZORA panel: hosts several CustomDCBot instances (one per Discord server) and lets allowlisted
+ * FreeBot × HOSTL.eu panel: hosts several CustomDCBot instances (one per Discord server) and lets allowlisted
  * Discord accounts manage the bots of their servers.
  * Start: npm run dashboard
  * Env: DASHBOARD_PORT, DASHBOARD_HOST, DASHBOARD_PASSWORD, DASHBOARD_DATA,

@@ -346,7 +346,7 @@
   },
   "help": {
     "bot-info-titel": "ℹ️ Bot-Info",
-    "bot-info-description": "Dieser Bot wird von TeamZORA für „%g“ betrieben.",
+    "bot-info-description": "Dieser Bot läuft für „%g“ – gehostet von FreeBot × HOSTL.eu.",
     "stats-title": "📊 Statistiken",
     "stats-content": "Aktive Module: %am\nRegistrierte Befehle: %rc\nBot-Version: %v\nLetzter Neustart: %lr\nLetztes Neuladen: %lR",
     "command-description": "Zeigt alle Befehle",
@@ -474,7 +474,7 @@
     "profile-context-description": "Level & XP anzeigen"
   },
   "main": {
-    "startup-info": "TeamZORA Bot – Log-Level: %l",
+    "startup-info": "FreeBot – Log-Level: %l",
     "intents-loaded": "%count Gateway-Intent(s) geladen: %intents",
     "intents-pairing-injected": "MessageContent wurde ohne Nachrichten-Intent angefordert; GuildMessages wurde automatisch ergänzt. Prüfe die module.json-Angaben.",
     "missing-moduleconf": "modules.json fehlt. Alle Module werden deaktiviert und modules.json wird später neu geschrieben",
